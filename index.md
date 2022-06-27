@@ -8,12 +8,12 @@ layout: default
 그래픽스를 이용해서 여러가지를 만들어보자!
 ```
 
-* [테스트 페이지](./graphics.html)
+* [쉐이더](./posts/graphics/shader_1.html)
 
-* [쉐이더](./posts/grapc.html)
+* [렌더링 파이프라인 과정](./posts/graphics/rendering_pipeline.html)
 
 ## 유니티
 
-* [유니티 기초](./posts/unity_theory_1.html)
+* [유니티 기초](./posts/unity/unity_theory_1.html)
 
 
