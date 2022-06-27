@@ -28,8 +28,8 @@ tags : Shader, Graphic
   - [Geometry Shader](#geometry-shader)
 1. **래스터라이저**
   - [Clipping](#clipping)
-  - [Perspective division](#perspective-division)
-  - [culling](#clipping)
+  - [Perspective divide](#perspective-divide)
+  - [culling](#culling)
   - [Viewport transform](#viewport-transform)
   - [Scan conversion](#scan-conversion)
 1. **프래그먼트 쉐이더 / 픽셀 쉐이더**
@@ -45,9 +45,11 @@ tags : Shader, Graphic
 버텍스 쉐이더에 입력할 수 있는 정점 값을 받아오는 과정.
 ```
 
-정점 데이터는 GPU에 의해 처리되는데, 이 과정을 수행하도록 CPU의 **그래픽스 API** 를 초기화 명령이 필요하다.  
+정점 데이터는 GPU에 의해 **병렬** 처리되는데, 이 과정을 수행하도록 CPU의 **그래픽스 API** 를 초기화 명령이 필요하다.  
 > #### 정점이 뭐에요?
 > 물체는 삼각형의 메쉬로 구성되는데, 이 삼각형을 이루는 각각의 점을 정점이라고 한다!
+
+![vertex](https://miro.medium.com/max/1050/1*iXasM6kAXxMEO1adrJedtQ.jpeg)  
 
 그래픽스 API의 구성으로는 **GPU 디바이스, 커맨드 큐, 커맨드 버퍼** 로 구성된다.  
 CPU는 GPU 디바이스와 커맨드 큐를 생성하여 커맨드 큐에 커맨드 버퍼를 쌓게 되는데, 커맨드 큐는 GPU 디바이스와 연결되어 정점 데이터를 넘겨준다. 이때 데이터는 CPU의 RAM에서 GPU의 VRAM으로 업로드된다.
@@ -65,6 +67,7 @@ CPU는 GPU 디바이스와 커맨드 큐를 생성하여 커맨드 큐에 커맨
 
 이 스트링 버퍼는 정점 조립과정을 거쳐 버텍스 쉐이더에 인자로 넣어진다.
 
+-----------------------------------------------------
 ## 버텍스 쉐이더
 ```
 전달받은 정점 인자를 이용하여 오브젝트를 그려질 화면의 위치로 전달하는 과정.
@@ -103,18 +106,112 @@ CPU는 GPU 디바이스와 커맨드 큐를 생성하여 커맨드 큐에 커맨
 카메라 위치 기준 공간을 카메라 시야(화면) 기준으로 변환된 공간으로 원근감이 존재함.
 
   - #### 정규화 공간  
-  클리핑이 실행된 후 공간 범위를 [Perspective division](#perspective-division)을 거쳐 w로 정규화된 3차원 좌표계  
+  클리핑이 실행된 후 공간 범위를 [Perspective divide](#perspective-divide)을 거쳐 w로 정규화된 3차원 좌표계  
   뷰포트 장치에 전송하기위해 정규화를 한 상태.
-
+  
+-----------------------------------------------------
 ## Tessellation  
 ![tessellation](https://t1.daumcdn.net/cfile/tistory/99758D4D5C8053B419)
-렌더링이 가능한 최소 단위로 분할하는 작업. 
-## Geometry Shader
-## Clipping
-## Perspective division
-## culling
-## Viewport transform
-## Scan conversion
+렌더링이 가능한 최소 단위로 분할하는 작업. 메쉬를 형성할때 삼각형으로 쪼개진 모습을 볼수 있다. tessellation은 이처럼 큰 patch를 수많은 primitive 조각들로 쪼개는 과정이다.  
+1. Tessellation Controll Shader  
+patch를 primitive로 쪼갤때의 수준을 결정한다.  
+제어 포인트 위치 및 기타속성, 사용자 정의를 포함해 생성함.
+
+2. Fixed-funtion tessellation Engine  
+patch를 더 작은 primitive로 분배하는 방법을 결정함.
+
+3. Tessellation Evaluation Shader  
+tessellation 연산의 결과를 받고, 보간할 위치를 연산하는 과정.
+
+-----------------------------------------------------
+## Geometry Shader  
+![geometry-shader](https://dexint.files.wordpress.com/2018/02/geom.jpg)  
+vertex shader를 인자값으로 사용하는 셰이더로, 하나의 primitive에 대응하는 연산을 수행한다.  
+입력받은 primitive에 대한 위치 변환, 생성, 삭제가 가능하며 프로그래머블한 쉐이더!  
+
+:cat: geometry shader를 이용하면 동물의 털 같은 재질을 쉽게 표현할수 있다 :dog:
+
+-----------------------------------------------------
+## Clipping  
+![clipping](https://developer.download.nvidia.com/CgTutorial/elementLinks/fig4_4.jpg){: width="800" height="400"}  
+```
+뷰 좌표에 Projection Matrix 연산을 수행하는 과정에서
+clip space 이외 영역 물체를 그리지 않는 과정.  
+```
+clipping은 clip space 공간에서 실행되는데, 쉽게 말해 카메라로 사진을 찍을때 화면 밖의 물체는 어차피 안보이므로 그려줄 필요가 없기에 잘라내는 것이다.  
+
+또한, clipping은 **동차좌표**를 이용한 4차원 (x,y,z,w)좌표에서 실행된다. 어차피 3차원 좌표로 할수 있는데 왜 굳이 4차원 좌표계를 사용할까?  
+ 
+![orthographics-and-persfective](https://www.researchgate.net/profile/Juan-Liu/publication/265693452/figure/fig2/AS:392209707880480@1470521489497/Projection-modes-a-orthographic-projection-and-b-perspective-projection.png)
+여기엔 몇가지 이유가 있는데 첫번째는 투영이 포함되기 때문이다.
+
+원근감은 w의 값을 기준으로 0이면 Orthographic 직교 투영, 아닐경우 Perspective 원근 투영으로 결정된다. 위 사진을 보면 물체가 카메라에 투영될때 원근감의 차이를 확인할 수 있다. 그리고 기본적으로 정점 변환을 위한 연산은 매트릭스 행렬의 곱셈으로 나타내지는데 가령.  
+
+#### 1. 변환의 이점  
+정점을 이동시킬때 행렬은 벡터 정보를 사용한다. 벡터는 1x4 matrix의 형태인데, 여기 곱해질 행렬이 4x4 matrix 가 아닐경우 행렬의 곱셈이 적용되지 않는다. 이렇듯 계산의 편의성을 위해 3차원에 w를 포함한 동차좌표계를 사용한다.  
+
+#### 2. point와 vecotr 
+w의 값이 필요한 이유는 또 한가지 벡터의 속성을 판단하기 쉽기 때문이다. (x,y,z)인 3차원 좌표계의 경우 point인지 vector인지 판단하기 어렵기에 w가 0일때 vector를 1일때 point를 나타낸다.  
+* w = 0 vector (확대, 축소, 방향변화)
+* w = 1 point (이동)  
+
+#### 3. 원근 표현  
+w값은 [0~1]의 범위를 가지는데 0일 경우 직교투영, 1일경우 원근투영이다.  
+만약, w의 값이 n이라면 모든 요소의 값을 n으로 나누어주는 과정을 거치며 정규화가 된다. 정규화는  perspective divide 작업으로 NDCS(정규화 좌표)가 생성된다.
+
+-----------------------------------------------------
+## Perspective divide  
+![perspectivedivide](/assets/img/NDCS.jpg){: width="800" height="400"}  
+원근법을 구현하는 과정으로 뷰 좌포계에 투영 행렬을 곱해 NDCS (정규좌표계)가 만들어진다.  
+분할은 w 좌표계를 기준으로 전체 요소를 나누어 원근분할을 수행.
+
+-----------------------------------------------------
+## culling  
+최적화를 위해 보이지 앟는 부분을 제거하는 기능으로, 와인딩 순서 알고리증을 사용한다.  
+>와인딩이란?  
+>다각형을 구성하는 버텍스간의 순서를 와인딩 순서하고 한다!  
+
+ ![culling](https://i.stack.imgur.com/NYP5Q.png)
+ 
+ 
+* 시계방향 와인딩 CW  
+보이는 면을 결정하는 방식이다.  
+다각형을 이루는 정점을 정면에서 바라볼때 시계방향 와인딩으로 그릴시, 물체를 그려야 할 면이라 판단하여 그리게 된다.  
+그려진 면의 노말벡터는 카메라의 노말벡터 방향과 반대이다. 이 말의 뜻은 정점 노말벡터가 모두 카메라를 향하는 앞면에 해당한다는 뜻이다
+ 
+* 반시계방향 와인딩 CCW  
+보이지 않는 면을 결정하는 방식으로, 정면을 기준으로 했을때 뒷면은 반시계 방향이 되므로 은면처리하여 그리지 않는 부분이 된다.
+
+-----------------------------------------------------
+## Viewport transform  
+![뷰포트 변환](https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-window-to-viewport-co-ordinate-transformation.png)  
+뷰포트 변환은 NDCS(정규화좌표) 결과를 각각의 출력 장치에 매핑하는 단계이다.  
+ 
+모니터 기준으로 width가 x, height가 y에 영향을 받으며, 평면에 그려질 도형의 순서는 [Z 버퍼 테스트](#z-버퍼-테스트)를 통해 결정되며 3D 공간에서 View volume에 존재하는 객체들을 Projection Plane에 투영하여 모니터에 출력한다. 
+
+뷰포트 변환에서는 윈도우와 윈도우 내에 출력 공간을 지정할 viewport가 필요하다.    
+* 윈도우와 viewport 크기가 대부분 동일하나, 그렇지 않은 경우도 존재함.  
+
+-----------------------------------------------------
+## Scan conversion  
+![주사변환](https://www.cs.princeton.edu/courses/archive/fall99/cs426/lectures/pipeline/img068.gif)  
+주사변환은 래스터화라고도 한다. 내가 그릴 그래픽스 객체를 디스플레이에 표시하기 위해 픽셀 데이터로 변환하는 과정을 뜻한다.
+
+-----------------------------------------------------
 ## Z 버퍼 테스트
+```
+그려야 할 물체의 픽셀들이 다른 물체보다 앞에 있는지 판단하기 위한 테스트 기법  
+```
+![z버퍼테스트](https://larranaga.github.io/Blog/imagenes/z-buffer.png)  
+
+Z read와 Z write로 나뉜다.  
+* Z buffer : 시점으로부터 물체까지의 Z값을 저장해두는 기억 장치.  
+* Z read : Z 버퍼에 기존 z 값 보다 앞에 있는지 판단한다.  
+* Z write : read과정에서 새로운 버퍼가 Pass 되면 자신의 z 값으로 덮어씌워 그린다.  
+
+-----------------------------------------------------
 ## stencil test
+
+-----------------------------------------------------
 ## color mask
+
