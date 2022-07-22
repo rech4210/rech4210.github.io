@@ -7,10 +7,13 @@ layout: default
 ```
 그래픽스를 이용해서 여러가지를 만들어보자!
 ```
+* [렌더링 파이프라인 과정](./posts/graphics/rendering_pipeline.html)
 
 * [쉐이더](./posts/graphics/shader_1.html)
 
-* [렌더링 파이프라인 과정](./posts/graphics/rendering_pipeline.html)
+* [UV 입히기](./posts/graphics/shader_2.html)
+
+
 
 ## 유니티
 

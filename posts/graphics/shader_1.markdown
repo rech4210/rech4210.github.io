@@ -125,7 +125,7 @@ Tags {"RenderType = Opaque}
 
 
 > #### Pass  
-> 전처리구문을 포함하는 영역이다. Pass에 정의된 일련의 쉐이더 연산을 수행하며 렌더 상태 설정한다  
+> 전처리구문을 포함하는 영역이다. Pass에 정의된 일련의 쉐이더 연산을 수행하며 렌더 상태를 설정한다  
 ex) Cull, ZTest, ZWrite  
 
 Attributes와 Varyings는 각각 vertexshader의 IN & OUT에 해당하며 이 값이 fragment shader로 전달된다.
