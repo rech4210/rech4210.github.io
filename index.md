@@ -18,6 +18,7 @@ layout: default
 ## 유니티
 
 * [유니티 기초](./posts/unity/unity_theory_1.html)
+* [델리게이트](./posts/unity/Delegate.html)
 
 
 ## 과제
