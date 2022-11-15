@@ -10,7 +10,7 @@ hvr -> hover
 //colors
 :root {
   //red
-  --code-d14:    #d14;
+  --code-d14:    rgb(214, 41, 84);
   --code-aa0000: #aa0000;
   --code-990000: #990000;
   //cyan
@@ -96,21 +96,21 @@ hvr -> hover
 
 @mixin dark-colors {
 // buttons
---L-a-text: 60%;
+--L-a-text: 75%;
 --L-buttons-main-bg: 17%;
 --L-buttons-main-border: 26%;
 --L-buttons-main-text: 76%;
 --L-buttons-main-text-hover: 80%;
 // headers + text
 --L-h1-and-bold: 90%;
---L-h2: 83%;
---L-h-3-6: 76%;
---L-text: 70%;
+--L-h2: 95%;
+--L-h-3-6: 80%;
+--L-text: 78%;
 // code blocks  
---L-code-text: 80%;
---L-code-bg: 3%;
---L-code-border: 5%;
---L-code-bold-text: 100%;
+--L-code-text: 90%;
+--L-code-bg: 8%;
+--L-code-border: 50%;
+--L-code-bold-text: 80%;
 //kbd these are keyboard shortcuts eg <kbd>CMD+R</kbd>
 --L-kbd-bg: 30%;
 --L-kbd-border: 45%;
@@ -118,7 +118,7 @@ hvr -> hover
 --L-kbd-text: 100%;
 // misilainius
 --L-splitter-blockquote-and-section: 15%;// for elements like hr and blockquote
---L-bg: 10%;
---L-small-in-a: 60%;
+--L-bg: 11%;
+--L-small-in-a: 30%;
 --L-table-header-and-dt: 90%; //more on dt's https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_dd_test
 }
