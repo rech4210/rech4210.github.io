@@ -2,7 +2,7 @@
 layout: post
 title: "TMP 텍스트 메쉬 프로 이상하게 뜰 때"
 date: 2022-11-15 23:48:04 +0900
-tags : Unity,C#
+tags : Unity,C#,TMP
 ---
 *맛있는 사람이 되자.*
 <br><br><br>
