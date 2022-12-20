@@ -6,6 +6,63 @@ tags : TIL
 ## 11월 18일
 ### **상속과 base**<br>
 <br>
+객체지향, 상속 등등 뭐라 말은 많지만 이게 사실 실제로 적용해보려면 너무 머리가 아팠다.
+내가 해맸던 이유와 상속에서 헷갈렸던점을 정리하고자 한다.
+
+1. monobehaviour의 유무 차이
+1. base 키워드 사용방법
+   2-1 override, virtual
+
+### 첫번째<br>
+상속에서 monobehaviour의 유무 차이는 뭘까?<br>
+기본적으로 유니티의 모든 개체는 mobonehaviour를 상속받아야 컴포넌트로 부착이 가능하다.<br>
+
+그말은 즉슨.<br>
+![image](https://user-images.githubusercontent.com/65288322/202512293-aa09ca39-8c79-4031-9c98-e30f73538f8f.png)<br>
+이렇게 상속을 받는다 쳤을때,  rabbit, cat, fox , russian blue 등등 모두 컴포넌트로써 부착이 가능하다는것.<br>
+마찬가지로 컴포넌트의 역할이기에 동적으로 생성하면 안된다.<br>
+만약 동적으로 개체를 생성할시 유니티가 경고한다.<br> mobonehaviour를 상속받는 개체를 동적으로 정의하려 한다고.<br>
+
+![image](https://user-images.githubusercontent.com/65288322/202512317-98c543ae-7628-4bb9-82af-f33b48e28fd0.png)<br>
+반대로 mobonehaviour를 상속받지 않을 경우, 개체는 부착이 불가능하며 접근이 불가하다.<br>
+사용하는 방법은 알다싶이 인터페이스를 담당할 스크립트 MakeAnimal.cs 가 있다고 치면<br>
+
+Cat _mycat = new Cat();   //기본 생성자를 사용한다고 가정한다.<br>
+russian_blue_bluecat= new russian_blue(); //자식 개체 생성<br>
+Cat _blue_bluecat= new russian_blue(); // 자식을 부모로 업캐스팅<br>
+
+하여 생성 및 정의 가능한것이다.
+
+### 두번째<br>
+base의 사용법이다.<br>
+
+![Character, Player](https://user-images.githubusercontent.com/65288322/202504527-e07daa39-32dc-4b3d-8dc1-d9a276bcb1c3.png)
+
+이 사진을 보면 Player.cs 에서는 Die 메소드를 base.Die()로 쓰고있다.<br>
+이 뜻은 부모 개체에 있는 Die 라는 메소드를 자식 스크립트에서 base 키워드로 실행하겠다는 것.<br>
+다음으로 생성자를 base로 사용할 수 도 있다.<br>
+![image](https://user-images.githubusercontent.com/65288322/202511317-580b94e8-8857-4155-94ea-a560920d05af.png)<br>
+생성자 실행 순서는.<br>
+1. 부모의 생성자 실행
+3. 자식의 생성자 실행
+4. 자식의 종료자 실행
+5. 부모의 종료자 실행
+이 순서대로 흘러간다.<br>
+
+그 다음으로는 override와 virtual이다.<br>
+
+간단히 얘기하자면 virtual은 부모단에서 override는 부모의 virtual로 지정된 메소드나 프로퍼티등을 내 입맛에 맞게 내용을 바꾸는 것이다.
+
+![image](https://user-images.githubusercontent.com/65288322/202512835-e21010d4-79ec-47b3-bb7d-4dda2db95277.png)
+
+![image](https://user-images.githubusercontent.com/65288322/202512929-8367db6f-a82b-4fb5-8021-c67377d08e64.png)
+
+위의 사진처럼 virtual로 선언된 getDamage를 Player 스크립트에서 override로 선언하고 몸통 부분을 바꾼것과 같다.
+이렇게 되면 자식에서 getDamaged() 실행 시 부모의 메소드를 사용하는것이 아닌 자식 별개의 메소드로 사용된다.
+물론 부모의 getDamage를 사용하고 싶다면 base.getDamage를 쓰면 된다.
+유용하게 쓰자.
+
+
 
 ## 11월 16일
 ### **데이터셋을 만들때 구조체와 클래스의 차이** <br>

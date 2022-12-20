@@ -6,7 +6,14 @@ layout: default
 
 ## TIL
 
-* [리드미](./posts/TIL/리드미.html)
+* [TIL](./posts/TIL/리드미.html)
+
+## 게임 행사 참가 기록
+* [게임잼](./posts/게임행사/게임잼.html)
+* [인디게임 페스티벌](./posts/게임행사/인디게임 페스티벌.html)
+* [G스타](./posts/게임행사/G스타.html)
+
+
 
 ## 그래픽스
 ```
@@ -44,7 +51,3 @@ c++ 스터디 기록
 ```
 자료구조 내용 정리
 ```
-
-
-## 과제
-* [과제 이미지](./posts/unity/temp_page.html)

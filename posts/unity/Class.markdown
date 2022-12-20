@@ -64,7 +64,7 @@ Cat _blue_bluecat= new russian_blue(); // 자식을 부모로 업캐스팅<br>
 ### 2. Base<br>
 base의 사용법이다.
 
-![Character, Player](https://user-images.githubusercontent.com/65288322/202504527-e07daa39-32dc-4b3d-8dc1-d9a276bcb1c3.png)
+![Character, Player](https://user-images.githubusercontent.com/65288322/202504527-e07daa39-32dc-4b3d-8dc1-d9a276bcb1c3.png)<br>
 
 이 사진을 보면 Player.cs 에서는 Die 메소드를 base.Die()로 쓰고있다.<br>
 이 뜻은 부모 개체에 있는 Die 라는 메소드를 자식 스크립트에서 base 키워드로 실행하겠다는 것.<br>
@@ -116,12 +116,15 @@ Player를 부착시키고 게임 실행시 정상적으로 작동했다.<br>
 
 <br>
 
-### 인터페이스를 상속받는 인터페이스 만들기
-+ 델리게이트도 인터페이스로부터 상속받을 수 있을까?
-옵저버 패턴으로 변경시켜보기
+### 인터페이스를 상속받는 인터페이스 만들기<br>
++ 델리게이트도 인터페이스로부터 상속받을 수 있을까?<br>
+옵저버 패턴으로 변경시켜보기<br>
 
 
-코드 줄이기 결과
+코드 줄이기 결과<br>
+이렇게 한 이유<br>
+-> 구현함에 있어서 States 클래스가 옵저버에 모든 상태 변화 메세지를 뿌려주고 각 클래스는 독자적인 행동을 하는 Notify() 함수를 만들고 싶었다.<br>
+
 전<br>
 ![states](https://user-images.githubusercontent.com/65288322/202639955-b654867d-3db4-40d7-9f66-3ff802198b51.png)<br>
 states.cs
@@ -157,4 +160,7 @@ move.cs
 
 ![image](https://user-images.githubusercontent.com/65288322/202640489-03f79534-919a-4e76-9b94-927f8d292931.png)<br>
 <br>
-timer.cs
+timer.cs<br>
+
+
+해당 내용처럼 states 클래스를 기준으로 상태 변화시 감지하는 옵저버 패턴을 구현하였다.
