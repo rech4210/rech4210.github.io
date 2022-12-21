@@ -3,6 +3,27 @@ layout: post
 title: 11월 기록
 tags : TIL
 ---
+
+## 11월 27일 비버잼 공부 기록
+
+변수명은 확실히 짓자 변수의경우 쓰임새와 정체성으로
+함수의 경우 동작에 초점을 맞춰서!!
+
+선형보간
+a to b일때 t의 값, 즉 t는 a와 b 사이에 t 일때의 위치 값을 가져오는것!
+
+애니메이션 굽기 => 최적화된 리소스임.
+
+foreach문과 for문의 차이, exception 에러
+
+스마트 머지
+- 유니티 내에서 제공하는 머지, 동일한 개체를 수정할 때 나오는 conflict -> 다른 부분중 겹치는 수정이 없다면 머지 해결해줌.
+3way merge 3가지 화면으로 보여주는 머지
+
+timeSinceLevelLoad
+
+Debug.Log() 보다는 -> Debug.Log($"루프 데스티네이션 값 : {loopDestInt}");
+
 ## 11월 18일
 ### **상속과 base**<br>
 <br>

@@ -9,7 +9,8 @@ layout: default
 * [TIL](./posts/TIL/리드미.html)
 
 ## 게임 행사 참가 기록
-* [게임잼](./posts/게임행사/게임잼.html)
+* [온라인게임잼](./posts/게임행사/온라인게임잼.html)
+* [비버게임잼](./posts/게임행사/비버게임잼.html)
 * [인디게임 페스티벌](./posts/게임행사/인디게임 페스티벌.html)
 * [G스타](./posts/게임행사/G스타.html)
 
@@ -27,7 +28,6 @@ layout: default
 ```
 초보의 유니티 공부 기록!
 ```
-* [유니티 기초](./posts/unity/unity_theory_1.html)
 * [델리게이트](./posts/unity/Delegate.html)
 * [클래스 상속과 다형성](/posts/unity/Class.html)
 
