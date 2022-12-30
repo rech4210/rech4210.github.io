@@ -14,6 +14,12 @@ layout: default
 * [인디게임 페스티벌](./posts/게임행사/인디게임 페스티벌.html)
 * [G스타](./posts/게임행사/G스타.html)
 
+## 게임 제작 일지
+```
+프로젝트별로 정리된 게임 제작 일지
+게임 제작 일지 쓰기를 습관화 하자!
+```
+* [제작일지 목록](./posts/GameDevDiary/목차.html)
 
 
 ## 그래픽스
@@ -24,21 +30,14 @@ layout: default
 * [쉐이더](./posts/graphics/shader_1.html)
 * [UV 입히기](./posts/graphics/shader_2.html)
 
+
 ## 유니티 공부 기록
 ```
-초보의 유니티 공부 기록!
+유니티 공부 기록!
 ```
 * [델리게이트](./posts/unity/Delegate.html)
 * [클래스 상속과 다형성](/posts/unity/Class.html)
 
-
-
-## 텍스트 게임 제작기
-```
-텍스트 기반 게임을 만들며 겪은 시행착오
-```
-* [TMP 오류](./posts/projects/TextGame/TMP오류.html)
-* [텍스트 읽어오기](./posts/projects/TextGame/텍스트읽어오기.html)
 
 
 ## C++
@@ -46,8 +45,12 @@ layout: default
 c++ 스터디 기록
 ```
 
-
-## 자료구조
+## 알고리즘
 ```
-자료구조 내용 정리
+알고리즘 드가자~~
+```
+
+## CS 정리!
+```
+CS 지식 공부 기록
 ```
