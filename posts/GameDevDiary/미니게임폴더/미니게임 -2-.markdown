@@ -93,9 +93,14 @@ int ReturnScore(int score)
 ```
 삭제됨과 동시에 Generation메소드를 이용해 자신의 위치에 새로운 과녁을 생성하도록 구현하였다.  
 
-    
+
 이제 플레이 해보면..!  
 <br>
 ![레이로 타겟 제거하기](https://user-images.githubusercontent.com/65288322/210077853-cd56046a-fc5b-4bb3-9062-2b1d9d7ec82c.gif)  
 
 예외처리를 포함하여 잘 작동하는 것 같다 ^-^  
+
+![랜덤시간](https://user-images.githubusercontent.com/65288322/210084688-a09c4e14-d5b0-46e7-b628-fbc1d2805274.png)  
+
+아 그리고 각 과녁은 점수가 다른 만큼 생성 시간에도 랜덤을 주었다.  
+이로써 2차 일지는 끝.

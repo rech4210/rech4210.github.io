@@ -10,4 +10,4 @@ tags : Unity,DevDiary
 ```
 
 * [TMP 오류](./TMP오류.html)
-* [텍스트 읽어오기](./텍스트읽어오기.html)
+* [텍스트 읽어오기](./스트림리더사용하기.html)
