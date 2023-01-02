@@ -3,6 +3,7 @@ layout: post
 title:  "쉐이더 제작하기"
 date:   2022-07-04 10:30:10 +0900
 categories: post
+description: 쉐이더의 uv에 대해 알아보자
 tags : Shader, Graphic
 ---
 *힘든 일에는 용기를 가지고 나아가자*  
@@ -43,7 +44,7 @@ Shader "Custom/UVtexture"
         pass
         {
             HLSLPROGRAM
-            
+
             #pragma vertex vert
             #pragma fragment frag
 
@@ -76,7 +77,7 @@ Shader "Custom/UVtexture"
 
                 return o;
             }
-            
+
             half4 frag(vertexOutput i) : SV_TARGET
             {
 
@@ -127,4 +128,3 @@ _Time은 자체적으로 내장된 빌트인 쉐이더 변수라고 한다, 시�
 
 참고로 _Time.xyz에 해당하는 xyz들은 축이 아니라 _Time의 시간속도다.  
 [유니티 Built-in shader variables _Time](https://docs.unity3d.com/Manual/SL-UnityShaderVariables.html)
-

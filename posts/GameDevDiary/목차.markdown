@@ -1,12 +1,11 @@
 ---
-layout: post
+layout: default
 title: "목차"
 date: 2022-12-30 22:07:04 +0900
 tags : Unity,DevDiary
 ---
-* [미니게임 제작](./미니게임폴더/미니게임.html)
+* [미니게임 제작](./miniGameFolder/miniGame.html)
 
 <br>
-<br>
 
-* [텍스트게임 제작](./텍스트게임폴더/텍스트게임.html)
+* [텍스트게임 제작](./textGameFolder/textGame.html)

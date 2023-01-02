@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 인디게임 페스티벌
+description:
 ---
 ![KakaoTalk_20221220_221217997](https://user-images.githubusercontent.com/65288322/208680131-aff6e526-6506-4c14-bf5c-829c5a65c517.jpg)
 ![KakaoTalk_20221220_221217997_01](https://user-images.githubusercontent.com/65288322/208680143-c8510f81-533a-4bf6-be7a-44cd4a92db10.jpg)

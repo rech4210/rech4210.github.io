@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "미니게임 제작일지"
+description: 표적 타격 구현, 랜덤 타이머 설정, 표적 자동 복구 설정, 레이캐스트 사용
 date: 2022-12-30 22:29:04 +0900
 tags : Unity,DevDiary
 ---

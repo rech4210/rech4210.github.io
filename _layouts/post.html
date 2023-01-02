@@ -12,3 +12,60 @@ layout: default
 {% if page.tags %}
   <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
 {% endif %}
+
+<!-----utteranc ---->
+<script src="https://utteranc.es/client.js"
+        repo="rech4210/comments"
+        issue-term="pathname"
+        label="Comments"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        max-width: 100%
+        async>
+}
+</script>
+html, body {
+width: 100%;
+height: 100%;
+margin: 0;
+}
+
+.center-outer {
+display: table;
+width: 100%;
+height: 100%;
+}
+
+.center-inner {
+display: table-cell;
+vertical-align: middle;
+text-align: center;
+}
+
+/* Essential CSS - Makes the effect work */
+
+body {
+background-color: #3498db;
+}
+
+.bubbles {
+display: inline-block;
+font-family: arial;
+position: relative;
+}
+
+.bubbles h1 {
+position: relative;
+margin: 1em 0 0;
+font-family: 'Luckiest Guy', cursive;
+color: #fff;
+z-index: 2;
+}
+
+.individual-bubble {
+position: absolute;
+border-radius: 100%;
+bottom: 10px;
+background-color: #fff;
+z-index: 1;
+}

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: G스타 후기
+description:
 ---
 ![G스타 입장줄](https://user-images.githubusercontent.com/65288322/208679886-5a8d03ba-c5a4-43c1-a149-57c49f163d7a.jpg)
 ![](https://user-images.githubusercontent.com/65288322/208679895-7544b7fb-be91-442e-9520-9da42030168c.jpg)

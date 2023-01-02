@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "미니게임 제작일지"
+description: 레일의 스크롤, OnBecameInvisible을 이용해 벗어날 때 위치 수정 처리
 date: 2022-12-30 22:29:04 +0900
 tags : Unity,DevDiary
 ---

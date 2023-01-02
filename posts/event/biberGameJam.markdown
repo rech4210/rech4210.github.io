@@ -2,6 +2,7 @@
 layout: post
 title: 버닝비버 게임잼
 tags : Game Jam
+description:
 ---
 ## 11월 25일 ~ 11월 27일
 ### 장소 영등포 올댓마인드

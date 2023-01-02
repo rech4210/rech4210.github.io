@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "미니게임 제작일지"
+description: 과녁들을 UI위에 일괄 생성하도록 하고 타겟을 상속으로 구현하였다
 date: 2022-12-30 22:29:04 +0900
 tags : Unity,DevDiary
 ---

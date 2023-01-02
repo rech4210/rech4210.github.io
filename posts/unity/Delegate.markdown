@@ -2,6 +2,7 @@
 layout: post
 title: "유니티 C# 델리게이트"
 date: 2022-11-04 19:57:04 +0900
+description: 델리게이트를 이용한 유니티 구현
 tags : Unity,C#
 ---
 ## 델리게이트
@@ -43,7 +44,7 @@ public delegate float ReturnFloatDele(float f_number);
     {
         Debug.Log("hi" + name);
     }
-	
+
     void bye()
     {
         Debug.Log("bye" + name);
@@ -53,12 +54,12 @@ public delegate float ReturnFloatDele(float f_number);
     {
         Debug.Log(f_number);
     }
-	
+
     float getfloatCalc(float f_number)
     {
         return f_number;
     }
-	
+
     int getIntCalc(int number)
     {
         return number;
@@ -97,7 +98,7 @@ void Start()
  void hi()
     {
         Debug.Log("hi" + name);
-        
+
     }
     void bye()
     {
@@ -138,14 +139,14 @@ public class Player : MonoBehaviour
     int _damage;
 
     public int hp { get { return  _hp;} set { _hp = value; Debug.Log("현재 체력 : "+_hp); } }
-	
+
     public int damage { get { return _damage; } set { _damage = value; Debug.Log("현재 공격력 : "+_damage); } }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            intdele(5); 
+            intdele(5);
         }
     }
 

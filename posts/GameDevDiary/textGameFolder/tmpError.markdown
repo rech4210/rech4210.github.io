@@ -2,6 +2,7 @@
 layout: post
 title: "TMP 텍스트 메쉬 프로 이상하게 뜰 때"
 date: 2022-11-15 23:48:04 +0900
+description: TMP 오류 해결방법
 tags : Unity,C#,TMP
 ---
 *맛있는 사람이 되자.*

@@ -3,6 +3,7 @@ layout: post
 title:  "쉐이더란?"
 date:   2022-07-01 19:52:50 +0900
 categories: post
+description: 쉐이더의 기초, hlsl 문법을 배우자
 tags : Shader, Graphic
 ---
 *천리길도 한 걸음 부터*  
@@ -45,45 +46,45 @@ Shader ShaderFolder/MyCustomShader // 쉐이더를 모은 폴더와 쉐이더 �
 		{
 			#pragma vertex vert // vertex를 vert로 지시하는 지시어
 			#prama fragment frag
-			
+
 			HSLSPROGRAM // 시작
-			
+
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			// HLSL에서 사용되는 매크로와 함수가 포함되어 있어요
-			
+
 			// Attributes의 구조체를 버텍스 쉐이더의 입력 구조체로 이용합니다
 			struct Attributes
 			{
 				 float4 positionOS   : POSITION;
 				 // 오브젝트 스페이스의 버텍스 위치값 입니다
 			};
-			
+
 
 			struct Varyings
 			{
 				float4 positionHCS  : SV_POSITION;
 				// 이 구조체의 포지션 변수는 반드시 SV_POSITION 시멘틱을 가져요
 			};
-			
+
 			// 버텍스 쉐이더의 타입은 반드시 출력 대상 구조체와 타입이 일치해야함
 			Varyings vert(Attributes IN)
 			{
 				Varyings Out;
 				Out.positionHCS = TranformObjectToHClip(IN.positionOS.xyz)  
 				// 오브젝트 스페이스 정점을 클립 스페이스로 변환
-				
+
 				return Out;
 			}
-			
+
 			half4 () : SV_Target
 			{
 				half4 customColor = half4(0.5,0,0,1); // 순서대로 RGBA
 				return customColor;
 			}
 			ENDHLSL // 종료
-			
+
 		}
-	
+
 	}
 }
 ```
@@ -129,10 +130,3 @@ Tags {"RenderType = Opaque}
 ex) Cull, ZTest, ZWrite  
 
 Attributes와 Varyings는 각각 vertexshader의 IN & OUT에 해당하며 이 값이 fragment shader로 전달된다.
-
-
-
-
-
-
-

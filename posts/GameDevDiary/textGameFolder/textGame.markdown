@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "텍스트게임 제작일지"
+description: 
 tags : Unity,DevDiary
 ---
 
@@ -9,5 +10,5 @@ tags : Unity,DevDiary
 학생 대상으로 내가 진행한 특강
 ```
 
-* [TMP 오류](./TMP오류.html)
-* [텍스트 읽어오기](./스트림리더사용하기.html)
+* [TMP 오류](./tmpError.html)
+* [텍스트 읽어오기](./UseStreamReader.html)

@@ -2,6 +2,7 @@
 layout: post
 title: "클래스 상속과 다형성"
 date: 2022-11-22 20:08:04 +0900
+description: 클래스의 개념을 공부하자!
 tags : Unity
 ---
 

@@ -22,6 +22,7 @@
   opacity: 0;
 }
 
+
 .overlay:target {
   visibility: visible;
   opacity: 1;
@@ -64,5 +65,11 @@
   }
   .popup{
     width: 70%;
+  }
+}
+.utterances {
+  max-width: 100% !important;
+  body {
+    text-align: center;
   }
 }

@@ -3,6 +3,8 @@ layout: post
 title: "StreamReader 사용하기"
 date: 2022-11-15 23:48:04 +0900
 tags : Unity,C#,TMP
+description: 스트림 리더 이용하여 텍스트 읽어오기
+
 ---
 *언젠간 할수있겠지.*
 <br><br><br>
