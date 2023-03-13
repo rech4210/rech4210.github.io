@@ -29,6 +29,8 @@ layout: default
 * [렌더링 파이프라인 과정](./posts/graphics/rendering_pipeline.html)
 * [쉐이더](./posts/graphics/shader_1.html)
 * [UV 입히기](./posts/graphics/shader_2.html)
+* [버텍스 쉐이더와 프래그먼트 쉐이더](./posts/graphics/shader_3.html)
+* [Blinn Phong과 Lighting](./posts/graphics/shader_4.html)
 
 
 ## 유니티 공부 기록
@@ -36,8 +38,13 @@ layout: default
 유니티 공부 기록!
 ```
 * [델리게이트](./posts/unity/Delegate.html)
-* [클래스 상속과 다형성](/posts/unity/Class.html)
+* [클래스 상속과 다형성](./posts/unity/Class.html)
 
+## Game Tip
+```
+게임 디자인과 기획에 관한 내용들
+```
+* [장르 혼합](./posts/GameDevTip\MixGenre.html)
 
 
 ## C++
