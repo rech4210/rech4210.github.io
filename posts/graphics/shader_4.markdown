@@ -61,19 +61,19 @@ struct InputData {
 
 <br>
 <br>
-빛의 연산을 위한 normal 추가<br>
+specular highlight 빛의 연산을 위한 worldSpacePos normal 추가<br>
 ```cs
 struct Attribute
 {
     float3 positionOS: POSITION;
-    float3 normalOS:NORMAL; // 라이트 연산에 필요한 노말
+    float3 normalOS:NORMAL; // specular highlight 연산에 필요한 노말
     float2 uv : TEXCOORD0;
 };
 struct Varyings
 {
     float4 posCS: SV_POSITION;
     float3 normalWS: TEXCOORD1; //TEXCOORD
-태그를 쓰는 이유는 래스터라이저에서 TEXCOORD로 태그된 모든 필드를 보간하기 떄문임.
+//  태그를 쓰는 이유는 래스터라이저에서 TEXCOORD로 태그된 모든 필드를 보간하기 떄문임.
     float2 uv : TEXCOORD0;
 };
 ```
@@ -92,6 +92,40 @@ struct Varyings
 ![image](https://user-images.githubusercontent.com/65288322/223447943-c6e6f8b2-bfb2-49ec-98d0-0ad255dd43c9.png)<br><br>
 정규화가 진행된 벡터
 
+<br>
+<br>
+마지막으로 specular light는 view dirction에 영향을 받아 바라보는 각도에 따라 하이라이트 위치가 미세하게 변한다. <br>
+이를 계산해주기 위해 아래와 같은 매크로를 사용한다. <br>
+```cs
+lightingInput.viewDirectionWS =
+ GetWorldSpaceNormalizeViewDir(lightingInput.positionWS);
+    // 뷰 방향으로부터 정점의 월드까지 방향 벡터 (뷰 위치 - WS)
+```
+
+<br>
+GetWorldSpaceNormalizeViewDir 매크로는 WS를 이용 뷰어를 가르키는 벡터를 계산함.
+```cs
+float3 GetWorldSpaceViewDir(float3 positionWS)
+{
+    if (IsPerspectiveProjection())
+    {
+        return GetCurrentViewPosition() - positionWS;
+        // 카메라의 월드 위치와 정점의 월드 위치를 계산
+    }
+    else
+    {
+        return -GetViewForwardDir();
+    }
+}
+```
+
+<br>
+<br>
+
+highlight가 나온 모습 <br>
+![2023-03-13 23;26;19](https://user-images.githubusercontent.com/65288322/224730950-7797324e-3e27-4eac-9cc0-a5cc21f0979e.gif)
+
+<br>
 specular<br>
 
 : 광원을 직접적으로 반사하면서 발생하는 표면의 하이라이트를 뜻한다.<br> 즉 강도가 높을수록 빛을 강하게 반사한다.<br> 맵 중에서 gloss map 이란게 있는데, 검은색은 0 흰색은 1인 alpha 맵으로 1에 가까울수록 반사 강도가 높아진다

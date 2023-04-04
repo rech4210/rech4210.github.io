@@ -91,5 +91,5 @@ float4 _MyTexture_ST
 <br>
 ```cs
 float4 colorSample = SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,i.uv);
-// 인자는 각각 텍스쳐 이름, 샘플러 이름, UV 이다
+//인자는 각각 텍스쳐 이름, 샘플러 이름, UV 이다
 ```
