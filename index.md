@@ -31,6 +31,9 @@ layout: default
 * [UV 입히기](./posts/graphics/shader_2.html)
 * [버텍스 쉐이더와 프래그먼트 쉐이더](./posts/graphics/shader_3.html)
 * [Blinn Phong과 Lighting](./posts/graphics/shader_4.html)
+* [ShadowMapping](./posts/graphics/shader_5.html)
+* [ShadowCascade](./posts/graphics/shader_6.html)
+
 
 
 ## 유니티 공부 기록
