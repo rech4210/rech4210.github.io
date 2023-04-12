@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "HLSL 프로그래밍_4 ShadowMapping"
+date:   2023-04-06 09:30:10 +0900
+categories: shader
+tags : Shader, Graphic
+---
+
 ## Transparency  
 기존에는 Opaque 재질만 다뤄봤다면 이제는 투명도 Tranparency를 다뤄볼 차례이다.  
 우선 투명도를 사용하기 위해서는 Alpha Blending 명령어를 사용해야 하는데, 이는 알파 채널을 사용하겠다는 의미이다.  
