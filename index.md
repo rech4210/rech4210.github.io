@@ -33,6 +33,7 @@ layout: default
 * [Blinn Phong과 Lighting](./posts/graphics/shader_4.html)
 * [ShadowMapping](./posts/graphics/shader_5.html)
 * [ShadowCascade](./posts/graphics/shader_6.html)
+* [Transparent](./posts/graphics/shader_7.html)
 
 
 
