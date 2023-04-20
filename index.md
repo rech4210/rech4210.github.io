@@ -34,6 +34,9 @@ layout: default
 * [ShadowMapping](./posts/graphics/shader_5.html)
 * [ShadowCascade](./posts/graphics/shader_6.html)
 * [Transparent](./posts/graphics/shader_7.html)
+* [Alpha CutoutMode](./posts/graphics/shader_8.html)
+* [DoubleSided과 Culling](./posts/graphics/shader_9.html)
+* [Macro란?](./posts/graphics/Macro.html)
 
 
 

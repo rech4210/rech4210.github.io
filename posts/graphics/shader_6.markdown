@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "HLSL 프로그래밍_4 ShadowMapping"
-date:   2023-04-06 09:30:10 +0900
+title:  "HLSL 프로그래밍_4 ShadowCascade"
+date:   2023-04-11 09:30:10 +0900
 categories: shader
 tags : Shader, Graphic
 ---

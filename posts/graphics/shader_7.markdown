@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "HLSL 프로그래밍_4 ShadowMapping"
-date:   2023-04-06 09:30:10 +0900
+title:  "HLSL 프로그래밍_5 Transparent"
+date:   2023-04-14 11:27:10 +0900
 categories: shader
 tags : Shader, Graphic
 ---
@@ -204,6 +204,3 @@ Enum을 바꿔주면 GUI의 변경을 Begin ~ EndChange 블럭에서 판단하�
           }
       }
 ```
-
-
-##Alpha Clipping
