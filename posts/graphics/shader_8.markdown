@@ -12,10 +12,10 @@ Opaque와 Transparent를 결합한 방식으로 Alpha Clipping, Alpha Testing등
 이 기능을 통해서 texture의 원하는 부분만 렌더링 할 수 있다.
 
 
-부분마다 Opaque와 Transparent가 존재하므로 혼합모드가 아니기 때문에 부분마다의 ZWrite와 Shadow Cast 및 Blend에 신경을 쓰지 않아도 된다.  
+부분마다 Opaque와 Transparent가 존재하므로 혼합모드가 아니다 때문에 ZWrite와 Shadow Cast 및 Blend에 신경을 쓰지 않아도 된다.  
 
 
-이 Alpha Cutouts은 Render Queue의 순서중 Geometry를 사용하지 않고 AlphaTest를 사용한다. 왜일까?
+이 Alpha Cutouts은 Render Queue Geometry를 사용하지 않고 AlphaTest를 사용한다. 왜일까?
 
 
 > 일반적으로 최적화를 위해 Depth Sorting을 이용하는데, Alpha Cutout은 Geometry 단계보다 더 많은 비용이 들기에 후순위 렌더를 수행한다.  
@@ -38,7 +38,7 @@ Opaque와 Transparent를 결합한 방식으로 Alpha Clipping, Alpha Testing등
 
 ```cs
 // 텍스쳐의 Alpha와 Color의 Alpha 값을 곱하여 -0.5를 한다.
-// 값이 0.5보다 작다면 해당 fragment를 자른다.
+// 값이 0.5보다 작다면 해당 fragment를 자른다.  
 clip(ColorSample.a * _Color.a - 0.5);
 ```  
 
@@ -80,7 +80,7 @@ void TestAlphaClip(float4 colorSample)
 ```    
 
 이처럼 기존 hlsl 파일에 있던 프로퍼티와 텍스쳐 변수들을 한 곳에 묶었다.  
-이 파일을 다른 hlsl에서 사용하기 위해서는 #include를 넣어주어야 한다.
+이 파일을 다른 hlsl에서 사용하기 위해서는 #include를 넣어주어야 한다.  
 
 > 이 과정에서 이전에 선언해두었던 변수들을 재정의하게되면 에러가 발생하니 주의하자. 이를 막기위해 Guard Keyword를 사용한다.
 
@@ -99,4 +99,4 @@ void TestAlphaClip(float4 colorSample)
 
 ![2023-04-13 16;45;27](https://user-images.githubusercontent.com/65288322/231690045-9e6e2efc-bb55-446c-9580-9a123497d23c.gif)  
 
-ShadowCaster Pass에 그림자 Alpha가 적용된 모습이다.
+ShadowCaster Pass에 그림자 Alpha가 적용된 모습이다.  

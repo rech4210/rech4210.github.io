@@ -7,6 +7,7 @@ tags : Shader, Graphic
 ---
 ## Double Sided Rendering  
 게임에서 카메라를 움직여 가까이 가져갈 때, 내부를 통과할시 안쪽이 투명하게 보이는걸 볼 수 있는데, 그 이유가 바로 이것이다.   
+
 ![image](https://user-images.githubusercontent.com/65288322/232411095-ca1c21a6-e9b8-42f0-83f0-cc9386739a2f.png)
 
 
@@ -15,6 +16,7 @@ tags : Shader, Graphic
 
 ### Face Culling  
 컬링은 최적화 기법으로 카메라에 보여질 면을 선택하고 그 외는 렌더링 하지 않는 방법을 뜻한다.  
+
 ```cs  
 //CullMode를 Enum 타입으로 가져온다.
 [Enum(UnityEngine.Rendering.CullMode)] _cull("Culling",FLOAT) = 1;
@@ -45,7 +47,7 @@ lightingInput.normalWS = normalize(i.normalWS)  * IS_FRONT_VFACE(frontFace,1,-1)
 
 ![image](https://user-images.githubusercontent.com/65288322/232408680-6df5783d-dc47-446e-8fab-36269a14f552.png)   
 
-내부에 조명이 적용되는걸 볼 수 있다.
+내부에 조명이 적용되는걸 볼 수 있다.  
 
 그런데 한 가지 문제점이 또 생겼다.  
 바로 shadow ance가 발생한것.
@@ -53,12 +55,12 @@ lightingInput.normalWS = normalize(i.normalWS)  * IS_FRONT_VFACE(frontFace,1,-1)
 
 ------
 
-### Back face Shadow ance 제거
+### Back face Shadow ance 제거  
 
-![image](https://user-images.githubusercontent.com/65288322/232408680-6df5783d-dc47-446e-8fab-36269a14f552.png)
+![image](https://user-images.githubusercontent.com/65288322/232408680-6df5783d-dc47-446e-8fab-36269a14f552.png)  
 
 
-![image](https://user-images.githubusercontent.com/65288322/232409483-b301ea9c-5ddf-4c3d-b23e-17ce66d92347.png)  
+![image](https://user-images.githubusercontent.com/65288322/232409483-b301ea9c-5ddf-4c3d-b23e-17ce66d92347.png)    
 이를 해결하기 위해선 해당 그림처럼 normal vector와 viewDir(광원 방향)간의 각도를 기준으로 90도 이상일시 뒤집어줘야 한다.  
 
 기존 LitPass에서는 **FRONT_FACE_TYPE frontFace : FRONT_FACE_SEMANTIC** 시멘틱을 통해 뒤집혀진 정점을 가져올 수 있었지만, Shadow pass에서는 vertex 단계에서 shadow position을 계산하기 때문에 fragment 단의 **FRONT_FACE_SEMANTIC** 시멘틱을 사용할 수 없다.  
