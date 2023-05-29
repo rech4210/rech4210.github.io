@@ -37,7 +37,9 @@ layout: default
 * [Alpha CutoutMode](./posts/graphics/shader_8.html)
 * [DoubleSided과 Culling](./posts/graphics/shader_9.html)
 * [Macro란?](./posts/graphics/Macro.html)
-* [clip 활용해보기](./posts/graphics/shader_ex_1.html)
+* [(HLSL)clip 활용해보기](./posts/graphics/shader_ex_1.html)
+* [(HLSL)Wave 구현해보기](./posts/graphics/shader_ex_2.html)
+
 
 
 ## 유니티 공부 기록
