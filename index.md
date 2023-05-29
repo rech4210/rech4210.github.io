@@ -13,6 +13,7 @@ layout: default
 * [비버게임잼](./posts/event/biberGameJam.html)
 * [인디게임 페스티벌](./posts/event/IndieFestival.html)
 * [G스타](./posts/event/G-star.html)
+* [글로벌 게임잼 대전](./posts/event/GlobalGameJamDaejeon.html)
 
 ## 게임 제작 일지
 ```

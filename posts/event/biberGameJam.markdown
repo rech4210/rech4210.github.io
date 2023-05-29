@@ -51,7 +51,88 @@ description:
 1. 컨테이너의 모든 타일들을 변하기 전 List_A에 넣는다. 그 후 List_A 내부 요소 타일들을 랜덤 변화시킨다.
 1. 사용자가 타일을 누르면 그 타일을 변화된 List_B에 저장한다. ListA 를 모두 탐색후 변화 할 타일이 없는 경우 잠시 대기한다.
 
-이렇게 타일이 랜덤하게 선택될경우 miss 되는 경우의 수를 제거했다.!<br>
+```cs
+public void GenerateMap(int width, int height)
+   {
+       tileContainer =  new Tile[width,height];
+
+       float deafultGap = (frameSize/mapWidth)* ((width * 0.5f)- 0.5f);
+
+       for (int i = 0; i < height; i++)
+       {
+           for (int j = 0; j < width; j++)
+           {
+               var a = Instantiate(prefabTile, transform);
+               unsetedTileList.Add(a.GetComponent<Tile>());
+
+               a.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = -i - 1;
+
+               a.transform.position = new Vector3(frameSize/(float)mapWidth * j- deafultGap, frameSize/(float)mapHeight * i- deafultGap+0.5f, 5.0f);
+               a.transform.localScale = new Vector3((frameSize / (float)mapWidth) * setFrameSizeFloat, (frameSize / (float)mapHeight) * setFrameSizeFloat, 0);
+               // 포지션과 사이즈 설정
+               tileContainer[i, j] = a.GetComponent<Tile>();
+           }
+       }
+   }
+```
+
+이렇게 타일이 랜덤하게 선택될경우 miss 되는 경우의 수를 제거했다.!<br>  
+이 외에도 키 입력과 타일간의 키매핑, 캐릭터간의 타일을 다르게 출력하는 설정도 포함하여 작성하였다.
+
+```cs
+public void drawTargetAlphabetOrFrame()
+    {
+        TileHotKey = (char)Random.Range(97, 123);
+        int offset = TileHotKey - 97;
+        currentKey = (KeyCode)((int)KeyCode.A + offset); // 대응 키, 핫키 설정
+        spwanedTime = Time.timeSinceLevelLoad;
+        spwaningTime = MapGenerater.S.GetRandomSpawningTime();
+        switch (tileType)
+        {
+            case "beaver":
+                // 격자의 알파값 설정
+                tileHotkeyTextMesh.gameObject.SetActive(false);
+                tileFrame.gameObject.SetActive(true);
+                break;
+            case "neutrality":
+                //격자, 텍스트 알파값 설정
+                tileHotkeyTextMesh.gameObject.SetActive(true);
+                tileFrame.gameObject.SetActive(true);
+                break;
+            case "human":
+                tileHotkeyTextMesh.gameObject.SetActive(true);
+                tileFrame.gameObject.SetActive(false);
+                tileHotkeyTextMesh.text = tileHotKey.ToString().ToUpper();
+                // 텍스트 알파값 설정.
+                break;
+            case "desert":
+                // 황무지로 설정
+                tileHotkeyTextMesh.gameObject.SetActive(false);
+                tileFrame.gameObject.SetActive(false);
+                break;
+            default:
+                break;
+        }
+
+        u = 0;
+
+    }
+/--------------------------------------------------------------------------------/
+public void SetTile(char tileHotKey, KeyCode currentKey, Sprite tileCurrentSprite, float spwaningTime,string tileType)
+    {
+        u = 0;
+        spwanedTime = Time.timeSinceLevelLoad;
+        isSetTiled = false;
+        TileHotKey = tileHotKey;
+        this.tileCurrentSprite = tileCurrentSprite;
+        this.tileTargetSprite.sprite = tileCurrentSprite;
+        this.spwaningTime = spwaningTime;
+        this.tileType = tileType;
+        this.currentKey = currentKey;
+    }
+```  
+지금 생각해보니 타일을 설정하는 함수에 인자가 너무 많이 들어가있다..  
+책임을 분리하여 기능별로 함수를 만들어두는게 더 낫지 않았을까 싶다.  
 
 ![치킨](https://user-images.githubusercontent.com/65288322/208680055-9dfd0c3b-7446-4d52-89f5-f38faf53e5b2.jpg)<br>
 간간히 야식도 챙겨주셨다. 치킨 너무 맛있었어요!!! <br><br><br><br><br><br>
