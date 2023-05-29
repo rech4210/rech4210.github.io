@@ -10,7 +10,7 @@ tags : Shader, Graphic
 이번 과제는 전에 배웠던 개념들을 모두 혼합하여 사용하고자 Gestner Wave를 사용한 바다를 만들어보기로 하였다.  
 
 
-## > [제작된 Shader 보기](https://www.youtube.com/watch?v=XL_UecVhJT4)
+## [제작된 Shader 보기](https://www.youtube.com/watch?v=XL_UecVhJT4)
 
 ## 구현해야 할 부분은?  
 1. 파도의 움직임을 구현하기위해 sin, cos을 통해 position 값을 제어해주기
