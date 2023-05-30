@@ -27,11 +27,34 @@ tags : Shader, Graphic
 
 ## 0. Shader 파일 만들기
 우선 가장 기본적인 shader 파일을 만들어 주자  
+![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/0420f500-b082-4276-a3da-10d9912a05a3)  
 HLSLPROGRAM부터 ENDHLSL 사이에 쉐이더 코드들이 들어가니 정의된 명령어를 제외하곤 모두 안에 쓰면 된다.  
-![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/0420f500-b082-4276-a3da-10d9912a05a3)
+<br><br><br><br><br><br><br><br>  
 
-마찬가지로 hlsl 파일도 만들어 기본적인 내용을 정의해주자
 ![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/94752079-1a99-4576-b74e-c047115e57d9)  
+마찬가지로 hlsl 파일도 만들어 기본적인 내용을 정의해주자  
+vertex 함수의 내부를 보면 VertexPositionInputs, VertexNormalInputs 두 구조체가 있는데 이 둘은 URP 내부에 정의된 구조체로 PBR 함수의 필수요소이다.  
+정점의 포지션을 담을 VertexPositionInputs, Tangent Coordinate를 담을 VertexNormalInputs를 선언하고 정의해주자.  
+
+각 구조체에 들어갈 값은 GetVertex....() 함수를 통해 구할 수 있다.  
+
+```cs  
+Varyings vert(Attributes input_Att)
+{
+    Varyings v_output;
+
+    //정점의 포지션을 담을 VertexPositionInputs
+    VertexPositionInputs posinput = GetVertexPositionInputs(input_Att.positionOS);
+    v_output.posCS = posinput.positionCS;
+    v_output.posWS = posinput.positionWS;
+
+    //Tangent Coordinate를 담을 VertexNormalInputs
+    VertexNormalInputs normalInput = GetVertexNormalInputs(input_Att.normalOS, input_Att.tangentOS);
+    v_output.normalWS = normalInput.normalWS;
+    v_output.tangentWS= float4(normalInput.tangentWS,input_Att.tangentOS.w);
+    v_output.bitangentWS = normalInput.bitangentWS;
+}
+```  
 
 쉐이더 내부의 함수와 프로퍼티를 사용하기위해 패키지 include 하는것을 잊지 말자.  
 ```cs
@@ -189,7 +212,7 @@ half4 frag(Varyings input_Vry) : SV_TARGET
      // // SAMPLE_TEXTURE2D는 주어진 텍스쳐와 샘플링 방식을 통해 UV를 기준으로 텍스쳐의 값을 가져오는 함수이다.
      // output = SAMPLE_TEXTURE2D(waveTexture,sampler_waveTexture, input_Vry.uv) * MainColor;
      output = pow(output, waveSurfacePow);
-     output = 1- output;
+     output.rgb = 0.1+(1- output.rgb);
      return output;
 }
 ```  
@@ -256,7 +279,7 @@ half4 frag(Varyings input_Vry) : SV_TARGET
 {
     //----------------------------  Main Color  --------------------------------------//
     // float4 output;
-    // output = SAMPLE_TEXTURE2D(waveTexture,sampler_waveTexture, input_Vry.uv) * MainColor;
+    // output = SAMPLE_TEXTURE2D(waveTexture,sampler_waveTexture, input_Vry.uv);
     // output= pow(output, waveSurfacePow);
     // output = 0.5- output;
 
@@ -277,12 +300,179 @@ UV, 컬러 작업을 마쳤으니 다음은 밋밋한 마테리얼을 손봐야�
 BDRF를 제공하는 PBR 마테리얼으로 출력하자.  
 
 BDRF가 무엇인지 궁금하다면?  
-BDRF
+[BDRF](https://en.wikipedia.org/wiki/Bidirectional_reflectance_distribution_function)  
 
-## 4. UniversalFragmentPBR 함수를 사용하여 BDRF 구현하기
+----
+
+## 4. UniversalFragmentPBR 함수를 사용하여 BDRF 구현하기  
+
+URP에는 PBR 마테리얼을 다루는 함수 UniversalFragmentPBR가 있다.  
+UniversalFragmentPBR 함수에는 두가지 인자값이 들어가는데, InputData와 SurfaceData 두 구조체 값이다.  
+1. InputData는 Light 연산을 하기위한 정점의 데이터를 가진다.  
+1. SurfaceData는 재질 표면에 맺히는 색, 투명도, 반사율등의 값을 가진다.
+
+이걸 이용해서 라이팅 연산 및 노말맵을 다뤄볼것이다.  
+
+```cs
+Shader ""
+{
+    Properties
+    {
+        // waveTexture("Wave Texture", 2D) = "white"{}
+        // waveValue("Wave uv Value",Range(0.0,10.0)) = 0
+        // waveDuration("Wave Duration",Range(0,10)) = 0
+        // waveAmplitude("Amplitude",Range(0.0,10.0)) = 0
+        // waveSurfacePow("surface pow", Range(0,10)) = 0
+
+        [Header(BRDF)]
+        _SpecCular("Specular",Range(0,1)) = 0
+        _Smoothness("Smooth", Range(0, 1)) = 0
+
+        // MainColor("Start color",Color) = (1,1,1,1)
+        // DestColor("Destination Color", Color) = (0.1,0.5,1,1)
+    }
+}
+
+//------------------------------------------------------------//
+
+half4 frag(Varyings input_Vry) : SV_TARGET
+{
+    // float4 finalColor = lerp(MainColor,DestColor,input_Vry.GradientUV.x);
+    // float4 finalColor_2 = lerp(MainColor,DestColor,input_Vry.GradientUV.y);
+    // output +=  0.5 * (finalColor + finalColor_2);
+
+    InputData lightingInput = (InputData)0;
+    lightingInput.normalWS = input_Vry.normalWS;
+    lightingInput.positionWS = input_Vry.posWS;
+    lightingInput.viewDirectionWS = GetWorldSpaceNormalizeViewDir(lightingInput.positionWS);
+    lightingInput.shadowCoord = TransformWorldToShadowCoord(input_Vry.posWS);
+    lightingInput.positionCS = input_Vry.posCS;
+    lightingInput.tangentToWorld = 0;
+
+    SurfaceData surfaceInput = (SurfaceData)0;
+    surfaceInput.albedo = output.rgb;
+    surfaceInput.alpha = output.a;
+    surfaceInput.specular = _SpecCular;
+    surfaceInput.smoothness = _Smoothness;
+    surfaceInput.emission = 0;
+    surfaceInput.metallic = 0;
+    surfaceInput.normalTS = 0;
+
+    return UniversalFragmentPBR(lightingInput, surfaceInput);
+}
+```
+
+![2023-05-30 20;44;21](https://github.com/rech4210/rech4210.github.io/assets/65288322/9b445c6c-170f-4e17-911a-4962a52020e6)  
+
+Smooth는 표면의 매끄러운 정도를 나타낸다.  
+값을 0에서 1로 바꾸면 난반사 - 정반사의 변화를 나타낼 수 있는데, 1에 가까우면 유리와 같이 매끄러운 정반사 재질을 나타낼 수 있다.  
+
+Specular는 반사율의 값인데 해당 함수에서는 1로 고정된다.  
+Specular와 Smooth가 궁금하다면?  
+
+[Blinn Phong, Specular](https://rech4210.github.io/posts/graphics/shader_4.html)  
+
+이렇게 PBR 마테리얼을 적용해보았다.  
+생각보다 너무 쉽지 않은가? :clap:
+
+## 5. Normal Map을 활용하여 파도의 표면 부분 변경 및 라이트 반영하기
+앞서 PBR 마테리얼을 적용함으로써 라이트 연산을 처리할수있게 되었다.  
+하지만 과연 바다에서 저런 동그란 모양의 태양이 보일까?  
+때론 물결에 부딪히거나 표면끼리 산란되며 모양이 달라질것이다.  
+
+여기서 필요한것이 바로 표면의 값을 처리할 수 있는 Normal Map이다.  
+노말맵은 법선 벡터의 값을 2D 맵으로 표현한것으로, 기존 정점의 값에 추가 정보를 주어 표면의 돌출을 나타낼 수 있는 방법중 하나이다.  
+
+노말맵에 대해 궁금하다면?  
+[Normal Map Tangent Coordinate](https://rech4210.github.io/posts/graphics/shader_10.html)  
+
+자세한 내용은 위 링크를 참고하면 될 듯하니 이제 순서대로 노말맵을 적용해보자.  
 
 
-1. Normal Map을 활용하여 파도의 표면 부분 변경 및 라이트 반영하기
+1. 노말맵 샘플링 결과 값을 가져와 디코딩한다.
+1. normal, tangent, bitangent 값을 계산하여 TBN 변환행렬을 구한다.
+1. TBN 행렬을 이용하여 Tangent space의 normal vector를 world space로 변환한다.  
+  - Tangent Space의 값을 World Space로 가져오는 이유는 Light 연산이 World Space를 기준으로 하기 때문이다.  
+1. 변환한 world space 값을 InputData, SurfaceDatad에 대입한다.  
+
+
+```cs
+Shader ""
+{
+    Properties
+    {
+        // waveTexture("Wave Texture", 2D) = "white"{}
+        // waveValue("Wave uv Value",Range(0.0,10.0)) = 0
+        // waveDuration("Wave Duration",Range(0,10)) = 0
+        // waveAmplitude("Amplitude",Range(0.0,10.0)) = 0
+        // waveSurfacePow("surface pow", Range(0,10)) = 0
+
+        // [Header(BRDF)]
+        // _SpecCular("Specular",Range(0,1)) = 0
+        // _Smoothness("Smooth", Range(0, 1)) = 0
+
+        [Header(Normal property)]
+        [NoScaleOffset][Normal]waveNormalTexture("Normal Map",2D) = "bump"{}
+        NormalTextureValue("Normal Appear Value",Range(0,1)) = 0
+        _NormalOffset_X("Normal X_Offset",Range(0,2)) =0
+        _NormalOffset_Y("Normal Y_Offset",Range(0,2)) =0
+        _NormalAddValue("Normal Add",Range(0,5)) = 0
+
+        // MainColor("Start color",Color) = (1,1,1,1)
+        // DestColor("Destination Color", Color) = (0.1,0.5,1,1)
+    }
+}
+
+//------------------------------------------------------------//
+
+
+half4 frag(Varyings input_Vry) : SV_TARGET
+{
+
+    //---------------------------  Normal Map  -------------------------------------//
+    // 노말맵 샘플링
+    float3 normalTS = UnpackNormalScale(SAMPLE_TEXTURE2D(waveNormalTexture, sampler_waveNormalTexture, input_Vry.normalUV),NormalTextureValue);
+    // 노말맵 값의 범위를 remap 시킨다.
+    normalTS = lerp(0.5,1, normalTS);
+    // TBN 행렬 계산
+    float3x3 tangentToWorld = CreateTangentToWorld(input_Vry.normalWS, input_Vry.tangentWS,input_Vry.tangentWS.w);
+    //
+    input_Vry.normalWS= normalize(TransformTangentToWorld(normalTS + _NormalAddValue , tangentToWorld));
+
+    //----------------------------  Main Color  --------------------------------------//
+    //Code....
+
+    //----------------------------  Value  --------------------------------------//
+    InputData lightingInput = (InputData)0;
+    // lightingInput.normalWS = input_Vry.normalWS;
+    // lightingInput.positionWS = input_Vry.posWS;
+    // lightingInput.viewDirectionWS = GetWorldSpaceNormalizeViewDir(lightingInput.positionWS);
+    // lightingInput.shadowCoord = TransformWorldToShadowCoord(input_Vry.posWS);
+    // lightingInput.positionCS = input_Vry.posCS;
+    lightingInput.tangentToWorld = tangentToWorld;
+
+    SurfaceData surfaceInput = (SurfaceData)0;
+    // surfaceInput.albedo = output.rgb;
+    // surfaceInput.alpha = output.a;
+    // surfaceInput.specular = _SpecCular;
+    // surfaceInput.smoothness = _Smoothness;
+    // surfaceInput.emission = 0;
+    // surfaceInput.metallic = 0;
+    surfaceInput.normalTS = normalTS;
+
+    // return UniversalFragmentPBR(lightingInput, surfaceInput);
+}
+```  
+
+![2023-05-31 00;07;16](https://github.com/rech4210/rech4210.github.io/assets/65288322/300abee5-9530-4f36-9d50-57199af6f42f)  
+노말맵이 깔끔하게 적용 된 모습이다.  
+
+
+다음으로는 투명도 값을 설정해보자.  
+알다싶이 물은 투명하다, 그렇기에 alpha 값이 적용되는 transparent 개체로 바꿔야 한다.  
+
+
+
 1. 왜곡효과 주기
 
 <br>
@@ -489,7 +679,7 @@ half4 frag(Varyings input_Vry) : SV_TARGET
     float4 output;
     output = SAMPLE_TEXTURE2D(waveTexture,sampler_waveTexture, input_Vry.uv) * MainColor;
     output= pow(output, waveSurfacePow);
-    output = 0.5- output;
+    output.rgb = 0.1+(1- output.rgb);
 
     float4 finalColor = lerp(MainColor,DestColor,input_Vry.GradientUV.x);
     float4 finalColor_2 = lerp(MainColor,DestColor,input_Vry.GradientUV.y);
