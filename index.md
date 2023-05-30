@@ -37,6 +37,7 @@ layout: default
 * [Transparent](./posts/graphics/shader_7.html)
 * [Alpha CutoutMode](./posts/graphics/shader_8.html)
 * [DoubleSided과 Culling](./posts/graphics/shader_9.html)
+* [PBR마테리얼과 Rendering Debugger](./posts/graphics/shader_10.html)
 * [Macro란?](./posts/graphics/Macro.html)
 * [(HLSL)clip 활용해보기](./posts/graphics/shader_ex_1.html)
 * [(HLSL)Wave 구현해보기](./posts/graphics/shader_ex_2.html)
