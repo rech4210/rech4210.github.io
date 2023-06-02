@@ -471,9 +471,89 @@ half4 frag(Varyings input_Vry) : SV_TARGET
 다음으로는 투명도 값을 설정해보자.  
 알다싶이 물은 투명하다, 그렇기에 alpha 값이 적용되는 transparent 개체로 바꿔야 한다.  
 
+```cs  
+Shader "Custom/wave_Shader"
+{
+    Properties
+    {
+        [Header(Wave property)]
+
+        [Header(BRDF)]
+
+        [Header(Normal property)]
+
+        [Header(Colors)]
+        AlphaColor("Alpha", Range(0,1)) = 1
+        // MainColor("Start color",Color) = (1,1,1,1)
+        // DestColor("Destination Color", Color) = (0.1,0.5,1,1)
+    }
+}
+
+//---------------------------------  hlsl  -----------------------------------//
+
+half4 frag(Varyings input_Vry) : SV_TARGET
+{
+    //---------------------------  Normal Map  -------------------------------------//
+    //----------------------------  Main Color  --------------------------------------//
+
+    // SurfaceData surfaceInput = (SurfaceData)0;
+    // surfaceInput.albedo = output.rgb;
+    // PBR 마테리얼에 알파값을 곱해줘 투명도를 만들어준다.
+    surfaceInput.alpha = output.a * AlphaColor;
+    // surfaceInput.specular = _SpecCular;
+    // surfaceInput.smoothness = _Smoothness;
+    // surfaceInput.emission = 0;
+    // surfaceInput.metallic = 0;
+    // surfaceInput.normalTS = normalTS;
+
+    return UniversalFragmentPBR(lightingInput, surfaceInput);
+}  
+```  
+코드 설정이 완료되었으면 Render Queue를 Transparent로 바꿔주자.  
+Transparent는 렌더링 순서 Geometry의 뒷 단계로 반투명 오브젝트를 렌더하기위해 사용한다.  
+간단히 정점을 순서대로 출력하고 겹치는 정점 부분을 Blend 하는 것이다.  
+자세히 알고싶다면? 아래를 참고하길 바란다.    
+[Blend](https://rech4210.github.io/posts/graphics/shader_7.html)  
 
 
-1. 왜곡효과 주기
+
+
+## 6. 왜곡효과 주기  
+
+거의 다 완성되었다.  
+하지만 중요한점이 있다.  
+파도가 변칙적이지 않고 똑같이 반복만된다면 어색할 것 같다.  
+마침 최근 Radial shear를 배워봤으니 이를 활용해보자.  
+방사형 전단(radial shader)는 방사형으로 나타나는 이미지 왜곡 기법이다.
+
+1. 전단이 수행될 중심점을 선택한다.
+1. 각 픽셀과 중심점과의 거리를 계산한다.
+1. 강도를 선택한다.
+
+```cs  
+Varyings vert(Attributes input_Att)
+{
+    // VARYINGS V_OUTPUT;
+
+    // //--------------------------  GRADIENT UV -----------------------------------//
+
+    // //--------------------------  WAVE  -----------------------------------//
+
+
+   //---------------------------- Shear  ----------------------------------//
+    float2 delta = v_output.uv - _ShearCenter;
+    float delta2 = dot(delta.xy, delta.xy);
+    // 두 벡터 dot 연산
+    float2 delta_offset = delta2 * _ShearStrength * (_CosTime.w *0.1); // 휘어짐
+    float2 shear = v_output.uv
+    + (float2(delta.y, -delta.x) * delta_offset) + (_ShearOffset); //Shear Offset은 uv 스크롤
+
+    v_output.uv = shear ;
+
+    //---------------------------- UV Scroll  ----------------------------------//
+}
+```  
+
 
 <br>
 <br>
