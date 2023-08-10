@@ -8,13 +8,24 @@ layout: default
 
 * [TIL](./posts/TIL/리드미.html)
 
-## 게임 행사 참가 기록
-* [온라인게임잼](./posts/event/OnlineGameJam.html)
-* [비버게임잼](./posts/event/biberGameJam.html)
+<details>
+<summary>게임 행사</summary>
+<div markdown="1">
 * [인디게임 페스티벌](./posts/event/IndieFestival.html)
 * [G스타](./posts/event/G-star.html)
+</div>
+</details>
+
+<br>
+<br>
+
+
+## 게임잼 참가 기록
+* [비버게임잼](./posts/event/biberGameJam.html)
 * [글로벌 게임잼 대전](./posts/event/GlobalGameJamDaejeon.html)
 * [8/6 대전 게임잼](./posts/event/GameJamDaejeon.html)
+
+
 
 ## 게임 제작 일지
 ```

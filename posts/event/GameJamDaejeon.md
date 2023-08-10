@@ -117,7 +117,7 @@ tags : Unity,GameJam, Event</h2>
             "name": "어둠의 창",
             "Image": "DarknessSpear",
             "description": "",
-            "recipe": 
+            "recipe":
             {
                 "recipeCode": 11,
                 "ingredientArray": [
@@ -147,7 +147,7 @@ using UnityEngine;
 public abstract class Manager&lt;T&gt; : MonoBehaviour where T : new()
 {
     private static T _instance;
-    
+
     public static T Instance
     {
         get
@@ -205,4 +205,3 @@ DataManager에서 Json 데이터 파싱과 관리를 담당하고 Item에서는 
 <p><img src="https://github.com/rech4210/rech4210.github.io/assets/65288322/a2cdcd22-2475-4f7c-afc8-74c5631c828e" alt="2023-08-08 08;11;37"></p>
 <p><img src="https://github.com/rech4210/rech4210.github.io/assets/65288322/ee500c1d-05e0-4b13-b4ac-6cf6c8baaba5" alt="2023-08-08 08;12;15"></p>
 <p><img src="https://github.com/rech4210/rech4210.github.io/assets/65288322/a00c77b1-490d-4886-8978-e078c46290a3" alt="2023-08-08 08;11;49"></p>
-
