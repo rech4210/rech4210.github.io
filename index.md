@@ -2,11 +2,21 @@
 layout: default
 ---
 
-# TA 아티스트 지망생 꽈배기<br><br>
-
+# TA 지망생 꽈배기<br><br>
 ## TIL
 
 * [TIL](./posts/TIL/리드미.html)
+
+
+
+<br>
+<br>
+
+
+## 게임잼 참가 기록
+* [비버게임잼](./posts/event/biberGameJam.html)
+* [글로벌 게임잼 대전](./posts/event/GlobalGameJamDaejeon.html)
+* [8/6 대전 게임잼](./posts/event\GameJamDaejeon.html)
 
 <details>
 <summary>게임 행사</summary>
@@ -16,29 +26,24 @@ layout: default
 </div>
 </details>
 
-<br>
-<br>
-
-
-## 게임잼 참가 기록
-* [비버게임잼](./posts/event/biberGameJam.html)
-* [글로벌 게임잼 대전](./posts/event/GlobalGameJamDaejeon.html)
-* [8/6 대전 게임잼](./posts/event/GameJamDaejeon.html)
-
-
-
+<br><br>
 ## 게임 제작 일지
 ```
 프로젝트별로 정리된 게임 제작 일지
 게임 제작 일지 쓰기를 습관화 하자!
 ```
 * [제작일지 목록](./posts/GameDevDiary/목차.html)
+<br><br>
 
 
 ## 그래픽스
 ```
 그래픽스를 이용해서 여러가지를 만들어보자!
 ```
+* [Korea Graphics Session](./posts/graphics/KoreaGraphics.html)
+<details>
+<summary>쉐이더</summary>
+<div markdown="1">
 * [렌더링 파이프라인 과정](./posts/graphics/rendering_pipeline.html)
 * [쉐이더](./posts/graphics/shader_1.html)
 * [UV 입히기](./posts/graphics/shader_2.html)
@@ -53,18 +58,34 @@ layout: default
 * [Macro란?](./posts/graphics/Macro.html)
 * [(HLSL)clip 활용해보기](./posts/graphics/shader_ex_1.html)
 * [(HLSL)Wave 구현해보기](./posts/graphics/shader_ex_2.html)
+</div>
+</details>
 
 
+<br>
 
+## 자료구조 & 알고리즘
+* [자료구조/알고리즘 C++](./posts/Algorithm/C++DataStructre.html)
+
+<br>
 ## 유니티 공부 기록
 ```
-유니티 공부 기록!
+유니티 공부 기록
 ```
 * [델리게이트](./posts/unity/Delegate.html)
 * [클래스 상속과 다형성](./posts/unity/Class.html)
+* [IL2CPP,Mono,AOT,JIT](./posts/unity/IL2CPP,Mono,AOT,JIT.html)
 
+<br><br>
+
+## 게임 리뷰
+* [2023 BIGS](./posts/Review/BIGS2023.html)
+
+<br><br>
 ## Game Tip
 ```
 게임 디자인과 기획에 관한 내용들
 ```
 * [장르 혼합](./posts/GameDevTip\MixGenre.html)
+
+<br><br><br><br>
