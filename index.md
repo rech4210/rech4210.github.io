@@ -74,7 +74,7 @@ layout: default
 * [Recursion 재귀호출 -2-](./posts/Algorithm/C++DataStructre5.html)
 * [BackTracking](./posts/Algorithm/C++DataStructre6.html)
 * [Time & Space Complexity](./posts/Algorithm/C++DataStructre7.html)
-* [객체지향 프로그래밍 OOP](./posts/Algorithm/C++DataStructre7.html)
+* [객체지향 프로그래밍 OOP](./posts/Algorithm/C++DataStructre8.html)
 
 <br>
 ## 유니티 공부 기록
