@@ -65,7 +65,16 @@ layout: default
 <br>
 
 ## 자료구조 & 알고리즘
-* [자료구조/알고리즘 C++](./posts/Algorithm/C++DataStructre.html)
+* [C++ 배열 다루기](./posts/Algorithm/C++DataStructre.html)
+* [C++ 포인터와 레퍼런스](./posts/Algorithm/C++DataStructre0.html)
+* [Dynamic Array & Vector Container](./posts/Algorithm/C++DataStructre1.html)
+* [헤더파일과 템플릿, searching / sorting 알고리즘](./posts/Algorithm/C++DataStructre2.html)
+* [Bit 연산](./posts/Algorithm/C++DataStructre3.html)
+* [Recursion 재귀호출 -1-](./posts/Algorithm/C++DataStructre4.html)
+* [Recursion 재귀호출 -2-](./posts/Algorithm/C++DataStructre5.html)
+* [BackTracking](./posts/Algorithm/C++DataStructre6.html)
+* [Time & Space Complexity](./posts/Algorithm/C++DataStructre7.html)
+* [객체지향 프로그래밍 OOP](./posts/Algorithm/C++DataStructre7.html)
 
 <br>
 ## 유니티 공부 기록

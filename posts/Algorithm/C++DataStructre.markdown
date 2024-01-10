@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[자료구조/ 알고리즘] C++"
+title:  "[자료구조/ 알고리즘] C++ 배열 다루기"
 date: 2023-09-20 12:17:04 +0900
 categories: Algorithm
 tags : Algorithm, Data Structure
@@ -405,43 +405,6 @@ int main() {
     return 0;
 }
 
-<details>
-<summary>결과</summary>
-초기 값 :1
-
-더해질 값: 2 연산 후: 3 sum : 3
-더해질 값: 3 연산 후: 6 sum : 6
-더해질 값: 4 연산 후: 10 sum : 10
-더해질 값: 5 연산 후: 15 sum : 15
-더해질 값: 6 연산 후: 21 sum : 21
-
-초기 값 :2
-
-더해질 값: 3 연산 후: 5 sum : 21
-더해질 값: 4 연산 후: 9 sum : 21
-더해질 값: 5 연산 후: 14 sum : 21
-더해질 값: 6 연산 후: 20 sum : 21
-
-초기 값 :3
-
-더해질 값: 4 연산 후: 7 sum : 21
-더해질 값: 5 연산 후: 12 sum : 21
-더해질 값: 6 연산 후: 18 sum : 21
-
-초기 값 :4
-
-더해질 값: 5 연산 후: 9 sum : 21
-더해질 값: 6 연산 후: 15 sum : 21
-
-초기 값 :5
-
-더해질 값: 6 연산 후: 11 sum : 21
-
-초기 값 :6
-
-21: 최대 값
-</details>
-
 ```
 시간 복잡도는 2단계의 nested loop를 돌기에 O(n^2^) 이다.
 다만 위의 방법은 새로운 배열을 생성하기에 메모리의 낭비가 존재할 수 있다.
@@ -519,8 +482,6 @@ capacity = 10
 ```
 이처럼 인덱스 요소가 1개 증가할 때와 달리 벡터의 메모리 사이즈를 늘려야 할 땐 기존 메모리 공간의 두 배를 할당한다.
 
---------------
-----------
 ----
 
 # Sorting
@@ -1236,113 +1197,3 @@ int main()
     cout << pairs.first << "," << pairs.second << endl;
 }
 ```
-
-# Pointer
-
-```cpp
-int(*p)[3];
-// int[3] 짜리 배열을 가리키는 포인터 타입 변수
-
-int  a[3] ={1,2,3};
-p = &a;
-///a 배열의 주소값을 포인터 p 변수에 저장한다.
-for (int  i = 0; i < 4; i++)
-{
-	cout  << (*(p) + i) <<  " "; //주소값 출력
-	cout  << *(*(p) + i) <<  " "; // dereference 역참조
-}
-result:
-1 2 3 6487720
-0x62fe98 0x62fea0 0x62fea8 0x62feb0
-```
-
-마찬가지로 포인터를 담는 포인터 타입 변수도 만들 수 있다.
-```cpp
-int x = 5;
-int * intptr = &x;
-int ** intptr_ptr = &intptr;
-
-
-Result :
-cout  <<  intptr   <<  endl; 0x62fea0
-cout  << *intptr   <<  endl; 5
-
-cout  <<  intptr_ptr   <<  endl; 0x62fe9c
-// refrence of ** pointer
-
-cout  << *intptr_ptr   <<  endl; 0x62fea0
-cout  << **intptr_ptr   <<  endl; 5
-```
-이렇게 더블 포인터를 사용한 후 역참조를 실행하면 포인터의 주소 및 레퍼런스된 값을 가져올 수 있다.
-더블 포인터 주소 **0x62fe9c** , 포인터 주소 **0x62fea0**간의 값을 빼면 4만큼의 공간이 남는데, 이것은 포인터의 저장 공간이 된다.
-
- null Ptr
- > nul을 가리키는 포인터
-
-
-## Reference Variables
-
-1. pointer *
-2. reference &
-이 두가지는 개별의 개념이다
-
-reference(&)는 call by value 타입을 call by reference 로 바꾸어 사용할 수 있다.
-
-아래의 예제를 보자.
-```cpp
-//call by reference type
-void  Add(int  &value)
-{
-	value = value+1;
-}
-
-int  main()
-{
-	int  x = 10;
-	int& y = x;
-
-	y++;
-	x++;
-
-	cout  <<"value x:"  <<  x  <<  endl;
-	cout  <<"value y:"  <<  y  <<  endl;
-
-	Add(x);
-	cout  <<"value x:"  <<  x  <<  endl;
-	cout  <<"value y:"  <<  y  <<  endl;
-}
-Result
-value x:12
-value y:12
-value x:13
-value y:13
-```
-즉, Reference Value는 같은 메모리를 공유하는 변수이다.
-
-
-## Reference by Pointer
-
-다음은 포인터를 사용한 refrence 전달 방식이다.
-```cpp
-void Add(int * valuePtr)
-{
-	// dereference operator *
-    *valuePtr = *valuePtr+1;
-}
-
-int main()
-{
-    int value = 5;
-    // address of operator
-    Add(&value);
-    cout<< "value: "<< value << endl;
-}
-```
-
-## Dinamic Memory Allocation
-함수 및 지역변수 (포인터 변수를 포함하여) 는 Stack Memory에 저장되나
-reference type의 포인터 실제 데이터 및 refernce 타입은  Heamp Memory (동적 메모리)에 저장된다.
-
-또한 StackMemory의 call stack은 컴파일러에 의해 삭제되나 heap은 동적 메모리 할당 공간이기에 직접 관리를 해주어야 한다.
-
-arr[2] = * (arr + 2)와 동일하다. 즉 배열의 메모리에
