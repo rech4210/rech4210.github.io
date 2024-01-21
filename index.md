@@ -3,14 +3,10 @@ layout: default
 ---
 
 # TA 지망생 꽈배기<br><br>
-## TIL
+<!-- ## TIL
 
-* [TIL](./posts/TIL/리드미.html)
+ * [TIL](./posts/TIL/리드미.html) -->
 
-
-
-<br>
-<br>
 
 
 ## 게임잼 참가 기록
@@ -42,7 +38,7 @@ layout: default
 ```
 * [Korea Graphics Session](./posts/graphics/KoreaGraphics.html)
 <details>
-<summary>쉐이더</summary>
+<summary>쉐이더 공부 목록</summary>
 <div markdown="1">
 * [렌더링 파이프라인 과정](./posts/graphics/rendering_pipeline.html)
 * [쉐이더](./posts/graphics/shader_1.html)
