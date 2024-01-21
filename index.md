@@ -3,9 +3,9 @@ layout: default
 ---
 
 # TA 지망생 꽈배기<br><br>
-## TIL
+<!-- ## TIL
 
-* [TIL](./posts/TIL/리드미.html)
+* [TIL](./posts/TIL/리드미.html) -->
 
 
 
