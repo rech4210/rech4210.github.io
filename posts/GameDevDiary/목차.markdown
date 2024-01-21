@@ -6,6 +6,8 @@ tags : Unity,DevDiary
 ---
 * [미니게임 제작](./miniGameFolder/miniGame.html)
 
+* [피하기 게임 제작](./AvoidGameFolder/AvoidGame.html)
+
 <br>
 
-* [텍스트게임 제작](./textGameFolder/textGame.html)
+<!-- * [텍스트게임 제작](./textGameFolder/textGame.html) -->
