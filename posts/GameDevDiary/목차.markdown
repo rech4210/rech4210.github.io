@@ -4,7 +4,7 @@ title: "목차"
 date: 2022-12-30 22:07:04 +0900
 tags : Unity,DevDiary
 ---
-* [미니게임 제작](./miniGameFolder/miniGame.html)
+<!-- * [미니게임 제작](./miniGameFolder/miniGame.html) -->
 
 * [피하기 게임 제작](./AvoidGameFolder/AvoidGame.html)
 

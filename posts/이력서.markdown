@@ -1,0 +1,118 @@
+---
+layout: post
+title: About me
+tags : TIL
+---
+
+# 저에 대해 소개합니다
+
+안녕하세요 미래 TA를 지망하는 개발자 꽈배기 입니다!  
+
+그래픽에 관심이 많아 게임 개발 진로를 택하여 공부중입니다
+궁금한점은 언제든지 연락주세요 👏
+
+---
+
+
+<details>
+<summary>🤗👉참여한 프로젝트</summary>
+<div markdown="1">
+
+<br>
+
+### 나그네 2021/12
+![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/e53fa1c4-6802-48ff-8b14-43c05d3537b0)
+
+[플레이 영상 보기](https://www.youtube.com/watch?v=nnsHW_TAIl0)
+
+[플레이 링크](https://nagne.itch.io/nagne)
+
+팀원 : 프로그래밍 3
+파트 : 게임 시스템, 플레이어 세팅
+
+학부생들과 함께 제작한 첫번째 게임입니다.  
+리듬게임을 제작하였으며 세로와 가로에서 내려오는 노트들로 개성을 살린 게임입니다.
+
+---
+
+### 버닝비버잼 2022/11
+
+![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/e394deab-2f72-4c7b-82f4-f3dfc7803896)
+
+[플레이 영상 보기](https://youtu.be/KLpQg7EkunM)
+
+[블로그 기록](https://rech4210.github.io/posts/event/biberGameJam.html)
+
+팀원 : 프로그래밍 3 아트 1  
+파트 : 타일맵 구현, 타일맵 로직
+
+버닝비버 주제로 만든 1:1 대전 땅따먹기 게임입니다.
+
+---
+
+### Root To Node 2023 글로벌 게임잼
+![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/16058e52-8f22-4a02-9606-38bd3f36a41b)
+
+[플레이 영상 보기](https://www.youtube.com/watch?v=p6PsjPhFjFc)
+
+[깃허브 링크](https://github.com/RootsToNodes/GGJ_Daejeon)
+
+
+팀원 : 프로그래밍 2  
+파트 : 터렛 생성 로직 구현, 적 개체 구현
+
+Root 라는 주제로 만든 게임으로 뿌리를 지키는 디펜스 게임을 만들었습니다.
+잎부터 뿌리까지 침략하는 적들을 상대로 기지를 지켜내는것이 목표입니다.
+
+
+---
+
+### 팜월드 2024/02 젬파이 게임잼
+![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/fe8c18cb-4a3b-4a87-b36e-c2e2208457fc)
+
+[플레이 영상 보기](https://youtu.be/qlPPUPTd1qI)
+
+[플레이 링크](https://zempie.com/ko/game/ag007xfrcss)
+
+[깃허브 링크](https://github.com/planepaper/FarmWorld)
+
+[블로그 기록](https://rech4210.github.io/posts/event/JempieGameJam.html)
+
+팀원 : 프로그래밍 3 아트 1 기획 1  
+파트 : 플레이어, 농작물
+
+>도망치는 농장물들과 시시각각 변하는 야채 주식판을 보고 저점 수확(?) 고점 판매로 최고의 농부가 되어보세요
+
+글로벌 게임젬 젬파이에서 만든 게임입니다.
+
+Make me Laugh라는 주제로 도망치는 농장물들과 이를 수확해 실시간 변하는 야채 가격으로 가장 높은 점수를 얻는것이 목표입니다.
+
+---
+</div>
+</details>
+
+<br>
+
+## 기술 스택
+
+[블로그 메인](https://rech4210.github.io/)
+
+Unity
+
+C#
+
+C++ (2024/02 현재 공부중!!)
+
+형상관리 (gitKraken)
+
+---
+
+
+## 게임 제작 기록
+
+유니티 게임 제작을 하며 겪은 문제점 및 해결과정을 적은 포스트 입니다
+
+
+* [Avoid Game](./GameDevDiary/AvoidGameFolder/AvoidGame.html)
+
+---

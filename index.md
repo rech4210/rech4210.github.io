@@ -3,20 +3,19 @@ layout: default
 ---
 
 # TA 지망생 꽈배기<br><br>
+
+# [About me](./posts/이력서.html)
+
 <!-- ## TIL
 
 * [TIL](./posts/TIL/리드미.html) -->
-
-
-
-<br>
-<br>
 
 
 ## 게임잼 참가 기록
 * [비버게임잼](./posts/event/biberGameJam.html)
 * [글로벌 게임잼 대전](./posts/event/GlobalGameJamDaejeon.html)
 * [8/6 대전 게임잼](./posts/event\GameJamDaejeon.html)
+* [글로벌 게임잼 젬파이](./posts/event\JempieGameJam.html)
 
 <details>
 <summary>게임 행사</summary>
@@ -37,13 +36,9 @@ layout: default
 
 
 ## 그래픽스
-```
-그래픽스를 이용해서 여러가지를 만들어보자!
-```
-* [Korea Graphics Session](./posts/graphics/KoreaGraphics.html)
-<details>
-<summary>쉐이더</summary>
-<div markdown="1">
+
+<!-- * [Korea Graphics Session](./posts/graphics/KoreaGraphics.html) -->
+
 * [렌더링 파이프라인 과정](./posts/graphics/rendering_pipeline.html)
 * [쉐이더](./posts/graphics/shader_1.html)
 * [UV 입히기](./posts/graphics/shader_2.html)
@@ -58,13 +53,11 @@ layout: default
 * [Macro란?](./posts/graphics/Macro.html)
 * [(HLSL)clip 활용해보기](./posts/graphics/shader_ex_1.html)
 * [(HLSL)Wave 구현해보기](./posts/graphics/shader_ex_2.html)
-</div>
-</details>
 
 
 <br>
 
-## 자료구조 & 알고리즘
+## C++로 배우는 자료구조 & 알고리즘
 * [C++ 배열 다루기](./posts/Algorithm/C++DataStructre.html)
 * [C++ 포인터와 레퍼런스](./posts/Algorithm/C++DataStructre0.html)
 * [Dynamic Array & Vector Container](./posts/Algorithm/C++DataStructre1.html)
@@ -75,6 +68,10 @@ layout: default
 * [BackTracking](./posts/Algorithm/C++DataStructre6.html)
 * [Time & Space Complexity](./posts/Algorithm/C++DataStructre7.html)
 * [객체지향 프로그래밍 OOP](./posts/Algorithm/C++DataStructre8.html)
+* [Linked List](./posts/Algorithm/C++DataStructre9.html)
+* [Queue](./posts/Algorithm/C++DataStructre10.html)
+* [Stack](./posts/Algorithm/C++DataStructre1.html)
+
 
 <br>
 ## 유니티 공부 기록
