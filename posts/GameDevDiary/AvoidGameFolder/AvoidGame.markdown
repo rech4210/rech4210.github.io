@@ -13,8 +13,6 @@ tags : Unity,DevDiary
 
 [레포지토리](https://github.com/rech4210/GaSi.git)
 
-=======
->>>>>>> 6f5eb41e495a07a1b67eede4bbbd633271364521
 > 개발중인 프로토타입
 
 
