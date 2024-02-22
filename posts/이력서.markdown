@@ -1,7 +1,7 @@
 ---
 layout: post
 title: About me
-tags : TIL
+tags :
 ---
 
 # 저에 대해 소개합니다
@@ -12,6 +12,8 @@ tags : TIL
 궁금한점은 언제든지 연락주세요 👏
 
 ---
+
+![1708624848372](https://github.com/rech4210/rech4210.github.io/assets/65288322/fed76fa7-cf63-4cf9-8a42-0f0203430b6d)
 
 
 <details>
@@ -32,6 +34,8 @@ tags : TIL
 
 학부생들과 함께 제작한 첫번째 게임입니다.  
 리듬게임을 제작하였으며 세로와 가로에서 내려오는 노트들로 개성을 살린 게임입니다.
+
+해당 프로젝트에서 게임 시스템, 플레이어 세 팅을 담당하였습니다.
 
 ---
 
@@ -76,7 +80,7 @@ Root 라는 주제로 만든 게임으로 뿌리를 지키는 디펜스 게임�
 
 [깃허브 링크](https://github.com/planepaper/FarmWorld)
 
-[블로그 기록](https://rech4210.github.io/posts/event/JempieGameJam.html)
+<!-- [블로그 기록](https://rech4210.github.io/posts/event/JempieGameJam.html) -->
 
 팀원 : 프로그래밍 3 아트 1 기획 1  
 파트 : 플레이어, 농작물
