@@ -11,7 +11,6 @@ tags : Unity,DevDiary
 
 ![Honeycam 2024-02-23 04-19-10](https://github.com/rech4210/rech4210.github.io/assets/65288322/e6b50975-a872-4c13-9338-a65ecf05f99d)  
 
-<<<<<<< HEAD
 [레포지토리](https://github.com/rech4210/GaSi.git)
 
 =======
