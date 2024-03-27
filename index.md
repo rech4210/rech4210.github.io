@@ -70,7 +70,10 @@ layout: default
 * [객체지향 프로그래밍 OOP](./posts/Algorithm/C++DataStructre8.html)
 * [Linked List](./posts/Algorithm/C++DataStructre9.html)
 * [Queue](./posts/Algorithm/C++DataStructre10.html)
-* [Stack](./posts/Algorithm/C++DataStructre1.html)
+* [Stack](./posts/Algorithm/C++DataStructre11.html)
+* [Binary Tree](./posts/Algorithm/C++DataStructre13.html)
+* [Binary Search Tree](./posts/Algorithm/C++DataStructre14.html)
+* [Heap, Priority queue](./posts/Algorithm/C++DataStructre15.html)
 
 
 <br>
