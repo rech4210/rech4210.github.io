@@ -75,8 +75,16 @@ layout: default
 * [Binary Search Tree](./posts/Algorithm/C++DataStructre14.html)
 * [Heap, Priority queue](./posts/Algorithm/C++DataStructre15.html)
 
+## 컴퓨터 과학
+* [운영체제](./posts/ComputerScience/OS.html)
+* [가상 메모리/물리 메모리](./posts/ComputerScience/Memory.html)
+* [프로세스와 스레드](./posts/ComputerScience/ProcessThread.html)
+* [CPU 스케쥴링](./posts/ComputerScience/CPUScedueling.html)
+* [Process 동기화 방법](./posts/ComputerScience/ProcessSynchronize.html)
+* [교착상태 DeadLock](./posts/ComputerScience/DeadLock.html)
 
 <br>
+
 ## 유니티 공부 기록
 ```
 유니티 공부 기록
