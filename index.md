@@ -74,6 +74,9 @@ layout: default
 * [Binary Tree](./posts/Algorithm/C++DataStructre13.html)
 * [Binary Search Tree](./posts/Algorithm/C++DataStructre14.html)
 * [Heap, Priority queue](./posts/Algorithm/C++DataStructre15.html)
+* [Hashing 알고리즘](./posts/Algorithm/C++DataStructre16.html)
+* [Trie](./posts/Algorithm/C++DataStructre17.html)
+
 
 ## 컴퓨터 과학
 * [운영체제](./posts/ComputerScience/OS.html)
@@ -82,6 +85,7 @@ layout: default
 * [CPU 스케쥴링](./posts/ComputerScience/CPUScedueling.html)
 * [Process 동기화 방법](./posts/ComputerScience/ProcessSynchronize.html)
 * [교착상태 DeadLock](./posts/ComputerScience/DeadLock.html)
+* [구조체 패딩](./posts/ComputerScience/structPadding.html)
 
 <br>
 

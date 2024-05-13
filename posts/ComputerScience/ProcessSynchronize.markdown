@@ -72,6 +72,11 @@ critical section (임계 구역)
 ##### critical section 예제
 
 ```cpp
+#include<iostream>
+#include<Windows.h>
+#include<thread>
+#include<chrono>
+
 CRITICAL_SECTION cs; // 크리티컬 섹션 개체 생성
 int glober_number = 0; //cs 영역에 해당될 변수
 
