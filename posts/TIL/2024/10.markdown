@@ -1,0 +1,98 @@
+---
+layout: post
+title: 5월 기록
+tags : TIL
+---
+* 5/20 항해99
+[전화번호](https://school.programmers.co.kr/learn/courses/30/lessons/42577)
+
+hash 활용 문제풀이
+전화번호부 중에 어떤 한 번호가 다른 번호의 접두사가 되는 경우 찾기
+ex ) 119, 5535252, 11975 -> 119가 11975의 접두사
+
+```cpp
+bool solution5(vector<string> phone_book) {
+
+    unordered_map<string, int> phone_map;
+
+    for (const auto& phone_num : phone_book)
+    {
+        phone_map[phone_num] = phone_num.size();
+    }
+
+    for (const auto& phone_num : phone_map)
+    {
+        for (int index = 0; index < phone_num.second - 1; ++index)
+        {
+            //index의 값을 증가시키며 prefix 탐색
+            string prefix = phone_num.first.substr(0, index + 1);
+            if (phone_map.find(prefix) != phone_map.end())
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+```
+
+<br>  
+---
+<br>  
+
+문제를 풀며 알게된 점.
+1. 해당 문제에서는 정렬을 하게될 경우 가장 인접한 전화번호가 prefix가 된다. 즉 인접한 대상이 prefix라면 false 아니라면 true
+2. 위의 조건으로 반복문을 여러번 돌지 않아도 되게 된다.
+
+* 5/21 항해99
+[의상](https://school.programmers.co.kr/learn/courses/30/lessons/42578)  
+[챌린지](https://www.acmicpc.net/problem/2179)
+
+hash 활용 문제풀이
+vector<vector<string>> 타입 옷의 가지수로 경우의 수 구하기
+
+```cpp
+int solution(vector<vector<string>> clothes) {
+    int answer = 1;
+    unordered_map<string,int> m;
+    for (vector<string> &cloth : clothes){
+        //요소가 존재한다면
+        if (m.find(cloth[1]) != m.end()) {
+            m.find(cloth[1])->second++;
+        }
+        else {
+            m.insert({ cloth[1],1 });
+        }
+    }
+
+    for (auto it2 = m.begin(); it2 != m.end(); it2++) {
+        answer = answer * (it2->second+1);
+    }
+    return answer -1;
+}
+
+```
+
+```cpp
+for (vector<string> &cloth : clothes){
+    if (m.find(cloth[1]) != m.end()) {
+        m.find(cloth[1])->second++;
+    }
+    else {
+        m.insert({ cloth[1],1 });
+    }
+}
+
+// or 동일한 결과. 인덱싱으로 접근
+for (int i = 0; i < clothes.size(); i++)
+    m[clothes[i][1]]++;
+```
+
+문제를 풀며 알게된 점
+1. 중복을 위해 처음에 string,string 을 key value로 했는데, int값만 판단해주면 되는 일이었음.
+2. map, set에서 vector<> 타입을 넣기 위해선 따로 연산자 오버로딩을 해야함
+
+<br>  
+---
+<br>  
