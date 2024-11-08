@@ -2,8 +2,8 @@
 layout: post
 title:  "AlphaBlend, AlphaTest, AlphaSort"
 date: 2024-05-26 20:05:04 +0900
-categories: Algorithm
-tags : Algorithm, Data Structure
+categories: Graphic
+tags : Shader, Graphic
 ---
 
 

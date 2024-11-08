@@ -3,7 +3,7 @@ layout: post
 title: "구조체 패딩"
 description:
 date: 2024-05-05 12:17:04 +0900
-tags :
+tags : ComputerScience
 ---
 
 ![image](https://github.com/rech4210/rech4210.github.io/assets/65288322/9d6c464e-48d9-4a7f-b3df-d876ff7b6417)
